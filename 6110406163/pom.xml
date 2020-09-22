@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>sample</groupId>
+    <groupId>controllers</groupId>
     <artifactId>6110406163</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <out.folder>6110406163</out.folder>
         <out.filename>6110406163-jar</out.filename>
-        <project.mainClass>sample.Main</project.mainClass>
+        <project.mainClass>controllers.Main</project.mainClass>
     </properties>
 
 
@@ -26,7 +26,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -89,9 +88,10 @@
                 </executions>
             </plugin>
 
+
+
         </plugins>
     </build>
-
 
 
 </project>
