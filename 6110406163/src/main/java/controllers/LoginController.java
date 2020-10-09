@@ -5,27 +5,85 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.Staffs;
+import services.StaffFileDataSource;
 
 import java.io.IOException;
 
 public class LoginController {
+    private String check;
+    private Staffs staffs;
+    private StaffFileDataSource staffFileDataSource;
+
+    @FXML
+    TextField username;
+
+    @FXML
+    PasswordField password;
+
+    @FXML
+    Label error;
+
+    public void setCheck(String check) {
+        this.check = check;
+    }
+
+    public void setStaffs(Staffs staffs) {
+        this.staffs = staffs;
+    }
+
+    public void setStaffFileDataSource(StaffFileDataSource staffFileDataSource) {
+        this.staffFileDataSource = staffFileDataSource;
+    }
+
+    @FXML
+    public void initialize(){
+        error.setOpacity(0);
+    }
+
     @FXML
     public void handleToLogin(ActionEvent event) throws IOException {
-//        if () {
-//            Button b = (Button) event.getSource();
-//            Stage stage = (Stage) b.getScene().getWindow();
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("administrator.fxml"));
-//            stage.setScene(new Scene(loader.load(), 800, 600));
-//            stage.show();
-//        }
-//        else if (){
-//            Button b = (Button) event.getSource();
-//            Stage stage = (Stage) b.getScene().getWindow();
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("staff.fxml"));
-//            stage.setScene(new Scene(loader.load(), 800, 600));
-//            stage.show();
-//        }
+        if (check.equals("a")) {
+            if (username.getText().equals("123") && password.getText().equals("123")) {
+                Button b = (Button) event.getSource();
+                Stage stage = (Stage) b.getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/administrator.fxml"));
+                stage.setScene(new Scene(loader.load(), 800, 600));
+                AdministratorController administratorController = loader.getController();
+                administratorController.setStaffs(staffs);
+                administratorController.setStaffFileDataSource(staffFileDataSource);
+                stage.show();
+            }
+            else {
+                error.setText("Invalid Account.");
+                error.setOpacity(1);
+            }
+        }
+        else if (check.equals("s")){
+            if (!staffs.checkEmpty()) {
+                if (staffs.checkPinStaff(username.getText(), password.getText())) {
+                    staffs.setDateTime(username.getText(), password.getText());
+                    staffFileDataSource.setStaffsData(staffs);
+                    Button b = (Button) event.getSource();
+                    Stage stage = (Stage) b.getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/staff.fxml"));
+                    stage.setScene(new Scene(loader.load(), 800, 600));
+                    stage.show();
+                }
+                else {
+                    error.setText("Invalid Account.");
+                    error.setOpacity(1);
+                }
+            }
+            else {
+                error.setText("Invalid Account.");
+                error.setOpacity(1);
+            }
+        }
     }
 
     @FXML

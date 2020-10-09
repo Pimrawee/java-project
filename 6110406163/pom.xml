@@ -11,7 +11,7 @@
     <properties>
         <out.folder>6110406163</out.folder>
         <out.filename>6110406163-jar</out.filename>
-        <project.mainClass>controllers.Main</project.mainClass>
+        <project.mainClass>Main</project.mainClass>
     </properties>
 
 

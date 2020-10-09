@@ -13,13 +13,41 @@ public class Staffs{
         staffs.add(staff);
     }
 
-    public boolean checkStaff(String username, String password){ // เช็ค username and password ตอนที่ staff login
+    public boolean checkPinStaff(String username, String password){ // เช็ค username and password ตอนที่ staff login
         for (StaffInformation s : staffs){
             if (s.getUsername().equals(username) && s.getPassword().equals(password)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public boolean checkStaff(String name){
+        for (StaffInformation s : staffs) {
+            if (s.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkEmpty(){
+        if (staffs.isEmpty()){
+            return true;
+        }
+        return false;
+    }
+
+    public void setDateTime(String username, String password){
+        for (StaffInformation s : staffs) {
+            if (s.getUsername().equals(username) && s.getPassword().equals(password)) {
+                s.setDateTimeLogin();
+            }
+        }
+    }
+
+    public ArrayList<StaffInformation> toList() {
+        return staffs;
     }
 
     @Override

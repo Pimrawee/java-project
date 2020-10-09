@@ -13,7 +13,7 @@
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #3366cc;">
          <children>
-            <Label fx:id="nameAdministrator" layoutX="25.0" layoutY="21.0" prefHeight="21.0" prefWidth="438.0" text="nameAdministrator" textFill="WHITE">
+            <Label layoutX="25.0" layoutY="21.0" prefHeight="21.0" prefWidth="438.0" text="Administrator" textFill="WHITE">
                <font>
                   <Font name="Alternate Gothic No.2 BT" size="48.0" />
                </font>
@@ -49,21 +49,21 @@
       <TextField fx:id="nameStaff" layoutX="45.0" layoutY="260.0" />
       <TextField fx:id="usernameStaff" layoutX="45.0" layoutY="340.0" />
       <TextField fx:id="passwordStaff" layoutX="45.0" layoutY="420.0" />
-      <Button fx:id="registerStaff" layoutX="90.0" layoutY="480.0" mnemonicParsing="false" style="-fx-background-color: #3366cc;" text="Register" textFill="WHITE">
+      <Button fx:id="registerStaff" layoutX="90.0" layoutY="480.0" mnemonicParsing="false" onAction="#handleToRegisterStaff" style="-fx-background-color: #3366cc;" text="Register" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Bold" size="18.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="15.0" layoutY="538.0" prefHeight="29.0" prefWidth="230.0" text="error" textAlignment="CENTER" textFill="#b51515">
+      <Label fx:id="error" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="538.0" prefHeight="29.0" prefWidth="230.0" text="error" textAlignment="CENTER" textFill="#b51515">
          <font>
-            <Font name="Alternate Gothic No.2 BT" size="24.0" />
+            <Font name="Alternate Gothic No.2 BT" size="21.0" />
          </font>
       </Label>
-      <TableView layoutX="300.0" layoutY="160.0" prefHeight="390.0" prefWidth="460.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
+      <TableView fx:id="staffsTable" layoutX="310.0" layoutY="160.0" prefHeight="390.0" prefWidth="450.0">
+         <columns>
+            <TableColumn maxWidth="150.0" prefWidth="150.0" text="Date" />
+            <TableColumn maxWidth="150.0" prefWidth="150.0" text="Time" />
+            <TableColumn maxWidth="150.0" prefWidth="150.0" text="Name's Staff" />
+         </columns></TableView>
    </children>
 </AnchorPane>
