@@ -38,6 +38,15 @@ public class Staffs{
         return false;
     }
 
+    public String findNameStaff(String username){
+        for (StaffInformation s : staffs) {
+            if (s.getUsername().equals(username)) {
+                return s.getName();
+            }
+        }
+        return " ";
+    }
+
     public void setDateTime(String username, String password){
         for (StaffInformation s : staffs) {
             if (s.getUsername().equals(username) && s.getPassword().equals(password)) {

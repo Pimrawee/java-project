@@ -11,7 +11,7 @@
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #336600;">
          <children>
-            <Label layoutX="25.0" layoutY="21.0" prefHeight="21.0" prefWidth="438.0" text="nameStaff" textFill="WHITE">
+            <Label fx:id="nameStaff" layoutX="25.0" layoutY="21.0" prefHeight="21.0" prefWidth="438.0" text="nameStaff" textFill="WHITE">
                <font>
                   <Font name="Alternate Gothic No.2 BT" size="48.0" />
                </font>

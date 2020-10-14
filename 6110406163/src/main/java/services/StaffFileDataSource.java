@@ -5,7 +5,7 @@ import models.Staffs;
 
 import java.io.*;
 
-public class StaffFileDataSource {
+public class StaffFileDataSource implements StaffDataSource{
     private String fileDirectoryName;
     private String fileName;
     private Staffs staffs;
@@ -41,11 +41,17 @@ public class StaffFileDataSource {
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
             StaffInformation staffInformation = new StaffInformation(data[5].trim(), data[6].trim(), data[7].trim());
+            staffInformation.setDayLogin(Integer.parseInt(data[0].trim()));
+            staffInformation.setMonthLogin(Integer.parseInt(data[1].trim()));
+            staffInformation.setYearLogin(Integer.parseInt(data[2].trim()));
+            staffInformation.setHourLogin(Integer.parseInt(data[3].trim()));
+            staffInformation.setMinuteLogin(Integer.parseInt(data[4].trim()));
             staffs.addStaff(staffInformation);
         }
         reader.close();
     }
 
+    @Override
     public Staffs getStaffsData() {
         try {
             staffs = new Staffs();
@@ -58,6 +64,7 @@ public class StaffFileDataSource {
         return staffs;
     }
 
+    @Override
     public void setStaffsData(Staffs staffs) {
         String filePath = fileDirectoryName + File.separator + fileName;
         File file = new File(filePath);

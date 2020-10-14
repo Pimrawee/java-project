@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.Staffs;
+import services.StaffDataSource;
 import services.StaffFileDataSource;
 
 import java.io.IOException;
@@ -17,7 +18,8 @@ import java.io.IOException;
 public class LoginController {
     private String check;
     private Staffs staffs;
-    private StaffFileDataSource staffFileDataSource;
+    private StaffDataSource staffDataSource;
+    private String nameStaffLogin;
 
     @FXML
     TextField username;
@@ -36,8 +38,8 @@ public class LoginController {
         this.staffs = staffs;
     }
 
-    public void setStaffFileDataSource(StaffFileDataSource staffFileDataSource) {
-        this.staffFileDataSource = staffFileDataSource;
+    public void setStaffDataSource(StaffDataSource staffDataSource) {
+        this.staffDataSource = staffDataSource;
     }
 
     @FXML
@@ -55,7 +57,7 @@ public class LoginController {
                 stage.setScene(new Scene(loader.load(), 800, 600));
                 AdministratorController administratorController = loader.getController();
                 administratorController.setStaffs(staffs);
-                administratorController.setStaffFileDataSource(staffFileDataSource);
+                administratorController.setStaffDataSource(staffDataSource);
                 stage.show();
             }
             else {
@@ -67,11 +69,15 @@ public class LoginController {
             if (!staffs.checkEmpty()) {
                 if (staffs.checkPinStaff(username.getText(), password.getText())) {
                     staffs.setDateTime(username.getText(), password.getText());
-                    staffFileDataSource.setStaffsData(staffs);
+                    staffDataSource.setStaffsData(staffs);
                     Button b = (Button) event.getSource();
                     Stage stage = (Stage) b.getScene().getWindow();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/staff.fxml"));
                     stage.setScene(new Scene(loader.load(), 800, 600));
+                    StaffController staffController = loader.getController();
+                    staffController.setNameStaffLogin(nameStaffLogin);
+                    staffController.setStaffs(staffs);
+                    staffController.setStaffDataSource(staffDataSource);
                     stage.show();
                 }
                 else {
@@ -92,6 +98,9 @@ public class LoginController {
         Stage stage = (Stage) b.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/welcome.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
+        WelcomeController welcomeController = loader.getController();
+        welcomeController.setStaffs(staffs);
+        welcomeController.setStaffDataSource(staffDataSource);
         stage.show();
     }
 }

@@ -7,26 +7,28 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import models.Staffs;
+import services.StaffDataSource;
 import services.StaffFileDataSource;
 
 import java.io.IOException;
 
 public class WelcomeController {
     private Staffs staffs = new Staffs();
-    private StaffFileDataSource staffFileDataSource;
+    private StaffDataSource staffDataSource;
 
     @FXML
     public void initialize(){
-        staffFileDataSource = new StaffFileDataSource("data", "staffs.csv");
-        staffs = staffFileDataSource.getStaffsData();
+        staffDataSource = new StaffFileDataSource("data", "staffs.csv");
+        staffs = staffDataSource.getStaffsData();
+        System.out.println(staffs);
     }
 
     public void setStaffs(Staffs staffs) {
         this.staffs = staffs;
     }
 
-    public void setStaffFileDataSource(StaffFileDataSource staffFileDataSource) {
-        this.staffFileDataSource = staffFileDataSource;
+    public void setStaffDataSource(StaffDataSource staffDataSource) {
+        this.staffDataSource = staffDataSource;
     }
 
     @FXML
@@ -38,7 +40,7 @@ public class WelcomeController {
         LoginController loginController = loader.getController();
         loginController.setCheck("a");
         loginController.setStaffs(staffs);
-        loginController.setStaffFileDataSource(staffFileDataSource);
+        loginController.setStaffDataSource(staffDataSource);
         stage.show();
     }
 
@@ -51,7 +53,7 @@ public class WelcomeController {
         LoginController loginController = loader.getController();
         loginController.setCheck("s");
         loginController.setStaffs(staffs);
-        loginController.setStaffFileDataSource(staffFileDataSource);
+        loginController.setStaffDataSource(staffDataSource);
         stage.show();
     }
 

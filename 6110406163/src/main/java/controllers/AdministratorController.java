@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.StaffInformation;
 import models.Staffs;
+import services.StaffDataSource;
 import services.StaffFileDataSource;
 
 import java.io.IOException;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 
 public class AdministratorController {
     private Staffs staffs;
-    private StaffFileDataSource staffFileDataSource;
+    private StaffDataSource staffDataSource;
     private ObservableList<StaffInformation> staffObservableList;
 
     @FXML
@@ -37,8 +38,8 @@ public class AdministratorController {
         this.staffs = staffs;
     }
 
-    public void setStaffFileDataSource(StaffFileDataSource staffFileDataSource) {
-        this.staffFileDataSource = staffFileDataSource;
+    public void setStaffDataSource(StaffDataSource staffDataSource) {
+        this.staffDataSource = staffDataSource;
     }
 
     @FXML
@@ -56,14 +57,14 @@ public class AdministratorController {
         if (staffs.checkEmpty()) {
             StaffInformation staffInformation = new StaffInformation(nameStaff.getText(), usernameStaff.getText(), passwordStaff.getText());
             staffs.addStaff(staffInformation);
-            staffFileDataSource.setStaffsData(staffs);
+            staffDataSource.setStaffsData(staffs);
             error.setText("Successful!");
         }
         else {
             if (!(staffs.checkStaff(nameStaff.getText()))) {
                 StaffInformation staffInformation = new StaffInformation(nameStaff.getText(), usernameStaff.getText(), passwordStaff.getText());
                 staffs.addStaff(staffInformation);
-                staffFileDataSource.setStaffsData(staffs);
+                staffDataSource.setStaffsData(staffs);
                 error.setText("Successful!");
             }
             else {
@@ -81,7 +82,7 @@ public class AdministratorController {
         stage.setScene(new Scene(loader.load(), 800, 600));
         WelcomeController welcomeController = loader.getController();
         welcomeController.setStaffs(staffs);
-        welcomeController.setStaffFileDataSource(staffFileDataSource);
+        welcomeController.setStaffDataSource(staffDataSource);
         stage.show();
     }
 }

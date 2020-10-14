@@ -3,7 +3,7 @@ package models;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class StaffInformation {//implements Comparable<StaffInformation>{
+public class StaffInformation implements Comparable<StaffInformation>{
     private String name;
     private String username;
     private String password;
@@ -71,6 +71,26 @@ public class StaffInformation {//implements Comparable<StaffInformation>{
         this.password = password;
     }
 
+    public void setDayLogin(int dayLogin) {
+        this.dayLogin = dayLogin;
+    }
+
+    public void setMonthLogin(int monthLogin) {
+        this.monthLogin = monthLogin;
+    }
+
+    public void setYearLogin(int yearLogin) {
+        this.yearLogin = yearLogin;
+    }
+
+    public void setHourLogin(int hourLogin) {
+        this.hourLogin = hourLogin;
+    }
+
+    public void setMinuteLogin(int minuteLogin) {
+        this.minuteLogin = minuteLogin;
+    }
+
     public void setDateTimeLogin(){
         Calendar calendar = new GregorianCalendar();
         this.dayLogin = calendar.get(Calendar.DATE);
@@ -86,10 +106,18 @@ public class StaffInformation {//implements Comparable<StaffInformation>{
         return getDate() + " " + getTime() + " " + getName() + " " + getUsername() + " " + getPassword();
     }
 
-//    @Override
-//    public int compareTo(StaffInformation o) {
-//        if (this.getDateLogin() > o.getDateLogin()) return 1;
-//
-//        return 0;
-//    }
+    @Override
+    public int compareTo(StaffInformation o) {
+        if (this.getYearLogin() > o.getYearLogin()) return 1;
+        if (this.getYearLogin() < o.getYearLogin()) return -1;
+        if (this.getMonthLogin() > o.getMonthLogin()) return 1;
+        if (this.getMonthLogin() < o.getMonthLogin()) return -1;
+        if (this.getDayLogin() > o.getDayLogin()) return 1;
+        if (this.getDayLogin() < o.getDayLogin()) return -1;
+        if (this.getHourLogin() > o.getHourLogin()) return 1;
+        if (this.getHourLogin() < o.getHourLogin()) return -1;
+        if (this.getMinuteLogin() > o.getMinuteLogin()) return 1;
+        if (this.getMinuteLogin() < o.getMinuteLogin()) return -1;
+        return 0;
+    }
 }
