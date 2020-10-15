@@ -7,7 +7,10 @@
 * เปิดโปรแกรม IntelliJ IDEA แล้ว import โฟลเดอร์ที่มี src อยู่ข้างใน
 
 ## วิธีการติดตั้งและ run ไฟล์ jar
-* เปิด Folder ที่ clone โปรเจคมา แล้วเข้าไปที่ \6110406163\target\6110406163 จากนั้น double click ที่ jar file ชื่อว่า 6110406163-jar.jar 
+* กรณีที่ double click ได้ 
+    - เปิด Folder ที่ clone โปรเจคมา แล้วเข้าไปที่ \6110406163\target\6110406163 จากนั้น double click ที่ jar file ชื่อว่า 6110406163.jar 
+* กรณีที่ double click ไม่ได้
+    - เปิด command ขึ้นมาแล้วเปลี่ยน directory ไปที่ Folder ที่มี jar file อยู่ และใช้คำสั่ง java -jar 6110406163.jar
 
 ## การวางโครงสร้าง
 * controllers
@@ -29,6 +32,9 @@
     - Parcel.java เก็บข้อมูลของพัสดุ
     - StaffInformation.java เก็บข้อมูลของเจ้าหน้าที่ส่วนกลาง
     - Staffs.java เก็บ Object ของเจ้าหน้าที่ส่วนกลางใน ArrayList
+* services
+    - StaffDataSource เก็บ method ที่ใช้ใน StaffFileDataSource
+    - StaffFileDataSource เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของเจ้าหน้าที่ส่วนกลาง
 * resources
     - โฟลเดอร์ image
         - profile.jpg
@@ -50,7 +56,7 @@
 * สัปดาห์ที่ 2
     - ติดตั้ง maven
 * สัปดาห์ที่ 3
-    - สร้าง GUI ตามที่ได้ออกแบบไว้
+    - สร้าง GUI ตามที่ได้ออกแบบไว้ โดยให้ fxml อยู่ใน Package resources
     - สร้าง Package controllers
     - สร้าง class AddGuestController, AdministratorController, LoginController, ProfileController, ReceiveDocumentController,
     ReceiveLetterController, ReceiveParcelController, SetRoomInformationController, StaffController, StatusController, WelcomeController
@@ -61,9 +67,18 @@
     - สร้าง class Letter, Document, Parcel, Locker, StaffInformation, Staffs ใน Package models
 * สัปดาห์ที่ 5
     - สร้าง Package services
-    - สร้าง class StaffFileDataSource
+    - สร้าง class StaffFileDataSource ใน Package services
+    - สร้าง interface StaffDataSource ใน Package services
     - แก้ไข class StaffInformation, Staffs ใน Package models
     - แก้ไข class WelcomeController, LoginController, AdministratorController ใน Package controllers
     - แก้ไข GUI หน้า login, administrator
     - อ่านเขียนไฟล์ csv ที่เก็บข้อมูลการเข้าใช้ระบบของเจ้าหน้าที่ส่วนกลาง
+    - แก้ไขไฟล์ README.md
+* สัปดาห์ที่ 6
+    - สร้าง interface RoomDataSource ใน Package services
+    - สร้าง class RoomFileDataSource ใน Package services
+    - สร้าง class RoomInformation, Rooms ใน Package models
+    - แก้ไข class LoginController, SetRoomInformationController, StaffController, WelcomeController ใน Package controllers
+    - แก้ไข fxml add_guest, set_room_information ใน Package resources
+    - อ่านเขียนไฟล์ csv ที่เก็บข้อมูลการตั้งค่าห้องพัก
     - แก้ไขไฟล์ README.md

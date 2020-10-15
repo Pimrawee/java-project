@@ -6,7 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import models.Rooms;
 import models.Staffs;
+import services.RoomDataSource;
+import services.RoomFileDataSource;
 import services.StaffDataSource;
 import services.StaffFileDataSource;
 
@@ -14,13 +17,17 @@ import java.io.IOException;
 
 public class WelcomeController {
     private Staffs staffs = new Staffs();
+    private Rooms rooms = new Rooms();
     private StaffDataSource staffDataSource;
+    private RoomDataSource roomDataSource;
 
     @FXML
     public void initialize(){
         staffDataSource = new StaffFileDataSource("data", "staffs.csv");
+        roomDataSource = new RoomFileDataSource("data", "rooms.csv");
         staffs = staffDataSource.getStaffsData();
-        System.out.println(staffs);
+        rooms = roomDataSource.getRoomsData();
+        System.out.println(rooms.toString());
     }
 
     public void setStaffs(Staffs staffs) {
@@ -29,6 +36,14 @@ public class WelcomeController {
 
     public void setStaffDataSource(StaffDataSource staffDataSource) {
         this.staffDataSource = staffDataSource;
+    }
+
+    public void setRooms(Rooms rooms) {
+        this.rooms = rooms;
+    }
+
+    public void setRoomDataSource(RoomDataSource roomDataSource) {
+        this.roomDataSource = roomDataSource;
     }
 
     @FXML
@@ -54,6 +69,8 @@ public class WelcomeController {
         loginController.setCheck("s");
         loginController.setStaffs(staffs);
         loginController.setStaffDataSource(staffDataSource);
+        loginController.setRooms(rooms);
+        loginController.setRoomDataSource(roomDataSource);
         stage.show();
     }
 

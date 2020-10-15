@@ -98,7 +98,6 @@ public class StaffInformation implements Comparable<StaffInformation>{
         this.yearLogin = calendar.get(Calendar.YEAR);
         this.hourLogin = calendar.get(Calendar.HOUR_OF_DAY);
         this.minuteLogin = calendar.get(Calendar.MINUTE);
-
     }
 
     @Override

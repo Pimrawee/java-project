@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import models.Rooms;
 import models.Staffs;
+import services.RoomDataSource;
 import services.StaffDataSource;
 import services.StaffFileDataSource;
 
@@ -15,7 +18,9 @@ import java.io.IOException;
 
 public class StaffController {
     private Staffs staffs;
+    private Rooms rooms;
     private StaffDataSource staffDataSource;
+    private RoomDataSource roomDataSource;
     private String nameStaffLogin;
 
     @FXML
@@ -33,11 +38,23 @@ public class StaffController {
         this.staffDataSource = staffDataSource;
     }
 
-    //    @FXML
-//    public void initialize(){
-//        nameStaff.setText(this.nameStaffLogin);
-//        System.out.println(this.nameStaffLogin);
-//    }
+    public void setRooms(Rooms rooms) {
+        this.rooms = rooms;
+    }
+
+    public void setRoomDataSource(RoomDataSource roomDataSource) {
+        this.roomDataSource = roomDataSource;
+    }
+
+    @FXML
+    public void initialize(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                nameStaff.setText(nameStaffLogin);
+            }
+        });
+    }
 
     @FXML
     public void handleToSetRoomInformation(ActionEvent event) throws IOException {
@@ -45,6 +62,10 @@ public class StaffController {
         Stage stage = (Stage) b.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/set_room_information.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
+        SetRoomInformationController setRoomInformationController = loader.getController();
+        setRoomInformationController.setNameStaffLogin(nameStaffLogin);
+        setRoomInformationController.setRooms(rooms);
+        setRoomInformationController.setRoomDataSource(roomDataSource);
         stage.show();
     }
 
@@ -101,7 +122,9 @@ public class StaffController {
         stage.setScene(new Scene(loader.load(), 800, 600));
         WelcomeController welcomeController = loader.getController();
         welcomeController.setStaffs(staffs);
+        welcomeController.setRooms(rooms);
         welcomeController.setStaffDataSource(staffDataSource);
+        welcomeController.setRoomDataSource(roomDataSource);
         stage.show();
     }
 }
