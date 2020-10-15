@@ -62,19 +62,13 @@ public class SetRoomInformationController {
     @FXML
     public void handleToSetRoom(Event e){
         String typeRoom = (String) type.getValue();
-        if (rooms.checkEmpty()){
-            RoomInformation roomInformation = new RoomInformation(Integer.parseInt(room.getText()), Integer.parseInt(floor.getText()), typeRoom);
-            if (typeRoom.equals("Single")) {
-                roomInformation.setMaxGuests(1);
-            } else if (typeRoom.equals("Twin")) {
-                roomInformation.setMaxGuests(2);
-            }
-            rooms.add(roomInformation);
-            roomDataSource.setRoomsData(rooms);
-            error.setText("Successful!");
+        if (Integer.parseInt(room.getText()) <= 0 || Integer.parseInt(room.getText()) > 8 ||
+                Integer.parseInt(floor.getText()) <= 0 || Integer.parseInt(floor.getText()) > 8){
+            error.setText("Incorrect room settings.");
+            error.setOpacity(1);
         }
         else {
-            if (rooms.checkRoom(Integer.parseInt(room.getText()), Integer.parseInt(floor.getText()))) {
+            if (rooms.checkEmpty()) {
                 RoomInformation roomInformation = new RoomInformation(Integer.parseInt(room.getText()), Integer.parseInt(floor.getText()), typeRoom);
                 if (typeRoom.equals("Single")) {
                     roomInformation.setMaxGuests(1);
@@ -85,7 +79,19 @@ public class SetRoomInformationController {
                 roomDataSource.setRoomsData(rooms);
                 error.setText("Successful!");
             } else {
-                error.setText("This room is already set.");
+                if (rooms.checkRoom(Integer.parseInt(room.getText()), Integer.parseInt(floor.getText()))) {
+                    RoomInformation roomInformation = new RoomInformation(Integer.parseInt(room.getText()), Integer.parseInt(floor.getText()), typeRoom);
+                    if (typeRoom.equals("Single")) {
+                        roomInformation.setMaxGuests(1);
+                    } else if (typeRoom.equals("Twin")) {
+                        roomInformation.setMaxGuests(2);
+                    }
+                    rooms.add(roomInformation);
+                    roomDataSource.setRoomsData(rooms);
+                    error.setText("Successful!");
+                } else {
+                    error.setText("This room is already set.");
+                }
             }
         }
         error.setOpacity(1);
