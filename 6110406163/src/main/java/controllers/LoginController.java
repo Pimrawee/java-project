@@ -100,10 +100,8 @@ public class LoginController {
                     stage.setScene(new Scene(loader.load(), 800, 600));
                     StaffController staffController = loader.getController();
                     staffController.setNameStaffLogin(nameStaffLogin);
-                    staffController.setStaffs(staffs);
                     staffController.setRooms(rooms);
                     staffController.setGuests(guests);
-                    staffController.setStaffDataSource(staffDataSource);
                     staffController.setRoomDataSource(roomDataSource);
                     staffController.setGuestDataSource(guestDataSource);
                     stage.show();

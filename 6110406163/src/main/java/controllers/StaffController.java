@@ -19,10 +19,8 @@ import services.StaffFileDataSource;
 import java.io.IOException;
 
 public class StaffController {
-    private Staffs staffs;
     private Rooms rooms;
     private Guests guests;
-    private StaffDataSource staffDataSource;
     private RoomDataSource roomDataSource;
     private GuestDataSource guestDataSource;
     private String nameStaffLogin;
@@ -30,16 +28,8 @@ public class StaffController {
     @FXML
     Label nameStaff;
 
-    public void setStaffs(Staffs staffs) {
-        this.staffs = staffs;
-    }
-
     public void setNameStaffLogin(String nameStaffLogin) {
         this.nameStaffLogin = nameStaffLogin;
-    }
-
-    public void setStaffDataSource(StaffDataSource staffDataSource) {
-        this.staffDataSource = staffDataSource;
     }
 
     public void setRooms(Rooms rooms) {
@@ -139,10 +129,8 @@ public class StaffController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/welcome.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
         WelcomeController welcomeController = loader.getController();
-        welcomeController.setStaffs(staffs);
         welcomeController.setRooms(rooms);
         welcomeController.setGuests(guests);
-        welcomeController.setStaffDataSource(staffDataSource);
         welcomeController.setRoomDataSource(roomDataSource);
         welcomeController.setGuestDataSource(guestDataSource);
         stage.show();

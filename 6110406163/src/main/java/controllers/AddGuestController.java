@@ -22,6 +22,7 @@ import java.io.IOException;
 
 public class AddGuestController {
     private String nameStaffLogin;
+    private Staffs staffs;
     private Rooms rooms;
     private Guests guests;
     private RoomDataSource roomDataSource;
@@ -104,7 +105,9 @@ public class AddGuestController {
         stage.setScene(new Scene(loader.load(), 800, 600));
         LoginController loginController =loader.getController();
         loginController.setGuests(guests);
+        loginController.setRooms(rooms);
         loginController.setGuestDataSource(guestDataSource);
+        loginController.setRoomDataSource(roomDataSource);
         stage.show();
     }
 
@@ -115,8 +118,11 @@ public class AddGuestController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/staff.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
         StaffController staffController = loader.getController();
+        staffController.setNameStaffLogin(nameStaffLogin);
         staffController.setGuests(guests);
+        staffController.setRooms(rooms);
         staffController.setGuestDataSource(guestDataSource);
+        staffController.setRoomDataSource(roomDataSource);
         stage.show();
     }
 }
