@@ -6,28 +6,29 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import models.Guests;
 import models.Rooms;
 import models.Staffs;
-import services.RoomDataSource;
-import services.RoomFileDataSource;
-import services.StaffDataSource;
-import services.StaffFileDataSource;
+import services.*;
 
 import java.io.IOException;
 
 public class WelcomeController {
     private Staffs staffs = new Staffs();
     private Rooms rooms = new Rooms();
+    private Guests guests = new Guests();
     private StaffDataSource staffDataSource;
     private RoomDataSource roomDataSource;
+    private GuestDataSource guestDataSource;
 
     @FXML
     public void initialize(){
         staffDataSource = new StaffFileDataSource("data", "staffs.csv");
         roomDataSource = new RoomFileDataSource("data", "rooms.csv");
+        guestDataSource = new GuestFileDataSource("data", "guests.csv");
         staffs = staffDataSource.getStaffsData();
         rooms = roomDataSource.getRoomsData();
-        System.out.println(rooms.toString());
+        guests = guestDataSource.getGuestsData();
     }
 
     public void setStaffs(Staffs staffs) {
@@ -44,6 +45,14 @@ public class WelcomeController {
 
     public void setRoomDataSource(RoomDataSource roomDataSource) {
         this.roomDataSource = roomDataSource;
+    }
+
+    public void setGuests(Guests guests) {
+        this.guests = guests;
+    }
+
+    public void setGuestDataSource(GuestDataSource guestDataSource) {
+        this.guestDataSource = guestDataSource;
     }
 
     @FXML
@@ -71,6 +80,8 @@ public class WelcomeController {
         loginController.setStaffDataSource(staffDataSource);
         loginController.setRooms(rooms);
         loginController.setRoomDataSource(roomDataSource);
+        loginController.setGuests(guests);
+        loginController.setGuestDataSource(guestDataSource);
         stage.show();
     }
 

@@ -9,8 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.Guests;
 import models.Rooms;
 import models.Staffs;
+import services.GuestDataSource;
 import services.RoomDataSource;
 import services.StaffDataSource;
 
@@ -20,8 +22,10 @@ public class LoginController {
     private String check;
     private Staffs staffs;
     private Rooms rooms;
+    private Guests guests;
     private StaffDataSource staffDataSource;
     private RoomDataSource roomDataSource;
+    private GuestDataSource guestDataSource;
     private String nameStaffLogin;
 
     @FXML
@@ -51,6 +55,14 @@ public class LoginController {
 
     public void setRoomDataSource(RoomDataSource roomDataSource) {
         this.roomDataSource = roomDataSource;
+    }
+
+    public void setGuests(Guests guests) {
+        this.guests = guests;
+    }
+
+    public void setGuestDataSource(GuestDataSource guestDataSource) {
+        this.guestDataSource = guestDataSource;
     }
 
     @FXML
@@ -90,9 +102,10 @@ public class LoginController {
                     staffController.setNameStaffLogin(nameStaffLogin);
                     staffController.setStaffs(staffs);
                     staffController.setRooms(rooms);
+                    staffController.setGuests(guests);
                     staffController.setStaffDataSource(staffDataSource);
-                    staffController.setNameStaffLogin(nameStaffLogin);
                     staffController.setRoomDataSource(roomDataSource);
+                    staffController.setGuestDataSource(guestDataSource);
                     stage.show();
                 }
                 else {
@@ -116,8 +129,10 @@ public class LoginController {
         WelcomeController welcomeController = loader.getController();
         welcomeController.setStaffs(staffs);
         welcomeController.setRooms(rooms);
+        welcomeController.setGuests(guests);
         welcomeController.setStaffDataSource(staffDataSource);
         welcomeController.setRoomDataSource(roomDataSource);
+        welcomeController.setGuestDataSource(guestDataSource);
         stage.show();
     }
 }

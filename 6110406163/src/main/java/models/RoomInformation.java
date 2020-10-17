@@ -1,7 +1,5 @@
 package models;
 
-import javafx.fxml.FXML;
-
 public class RoomInformation {
     private int room;
     private int floor;
@@ -68,6 +66,6 @@ public class RoomInformation {
     @Override
     public String toString(){
         return getRoom() + " " + getFloor() + " " + getBuilding() + " "
-                + getType() + " " + getMaxGuests() + getNumGuests();
+                + getType() + " " + getMaxGuests() + " " + getNumGuests();
     }
 }

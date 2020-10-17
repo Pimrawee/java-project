@@ -62,7 +62,7 @@ public class SetRoomInformationController {
     @FXML
     public void handleToSetRoom(Event e){
         String typeRoom = (String) type.getValue();
-        if (Integer.parseInt(room.getText()) <= 0 || Integer.parseInt(room.getText()) > 8 ||
+        if (Integer.parseInt(room.getText()) <= 0 || Integer.parseInt(room.getText()) > 10 ||
                 Integer.parseInt(floor.getText()) <= 0 || Integer.parseInt(floor.getText()) > 8){
             error.setText("Incorrect room settings.");
             error.setOpacity(1);

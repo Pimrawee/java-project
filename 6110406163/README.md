@@ -27,12 +27,20 @@
     - StatusController.java เป็น controller ใช้ควบคุม status.fxml
 * models
     - Document.java เก็บข้อมูลของเอกสาร
+    - GuestInformation เก็บข้อมูลของผู้เข้าพัก
+    - Guests เก็บ Object ของผู้เข้าพักใน ArrayList
     - Letter.java เก็บข้อมูลของจดหมาย
     - Locker.java เก็บ Object ของจดหมาย เอกสาร พัสดุใส่ใน ArrayList
     - Parcel.java เก็บข้อมูลของพัสดุ
+    - RoomInformation เก็บข้อมูลของห้องพัก
+    - Rooms เก็บ Object ของห้องพักใน ArrayList
     - StaffInformation.java เก็บข้อมูลของเจ้าหน้าที่ส่วนกลาง
     - Staffs.java เก็บ Object ของเจ้าหน้าที่ส่วนกลางใน ArrayList
 * services
+    - GuestDataSource เก็บ method ที่ใช้ใน GuestFileDataSource
+    - GuestFileDataSource เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของผู้เข้าพัก
+    - RoomDataSource เก็บ method ที่ใช้ใน RoomFileDataSource
+    - RoomFileDataSource เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของการกำหนดข้อมูลห้อง
     - StaffDataSource เก็บ method ที่ใช้ใน StaffFileDataSource
     - StaffFileDataSource เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของเจ้าหน้าที่ส่วนกลาง
 * resources
@@ -75,10 +83,12 @@
     - อ่านเขียนไฟล์ csv ที่เก็บข้อมูลการเข้าใช้ระบบของเจ้าหน้าที่ส่วนกลาง
     - แก้ไขไฟล์ README.md
 * สัปดาห์ที่ 6
-    - สร้าง interface RoomDataSource ใน Package services
-    - สร้าง class RoomFileDataSource ใน Package services
-    - สร้าง class RoomInformation, Rooms ใน Package models
-    - แก้ไข class LoginController, SetRoomInformationController, StaffController, WelcomeController ใน Package controllers
+    - สร้าง interface RoomDataSource, GuestDataSource ใน Package services
+    - สร้าง class RoomFileDataSource, GuestFileDataSource ใน Package services
+    - สร้าง class RoomInformation, Rooms, GuestInformation, Guests ใน Package models
+    - แก้ไข class AddGuestController, LoginController, ReceiveDocumentController, ReceiveLetterController, ReceiveParcelController,
+    SetRoomInformationController, StaffController, WelcomeController ใน Package controllers
     - แก้ไข fxml add_guest, set_room_information ใน Package resources
     - อ่านเขียนไฟล์ csv ที่เก็บข้อมูลการตั้งค่าห้องพัก
+    - อ่านเขียนไฟล์ csv ที่เก็บข้อมูลผู้เข้าพัก
     - แก้ไขไฟล์ README.md
