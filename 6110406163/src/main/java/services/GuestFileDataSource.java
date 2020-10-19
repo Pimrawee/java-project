@@ -40,7 +40,7 @@ public class GuestFileDataSource implements GuestDataSource{
         String line = "";
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
-            GuestInformation guestInformation = new GuestInformation(data[0].trim(), data[1].trim(), data[2].trim());
+            GuestInformation guestInformation = new GuestInformation(data[0].trim(), Integer.parseInt(data[1].trim()), Integer.parseInt(data[2].trim()));
             guestInformation.setBuilding(data[3].trim());
             guestInformation.setType(data[4].trim());
             guests.add(guestInformation);

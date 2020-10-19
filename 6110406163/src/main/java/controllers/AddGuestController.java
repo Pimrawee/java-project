@@ -13,16 +13,13 @@ import javafx.stage.Stage;
 import models.GuestInformation;
 import models.Guests;
 import models.Rooms;
-import models.Staffs;
 import services.GuestDataSource;
 import services.RoomDataSource;
-import services.StaffDataSource;
 
 import java.io.IOException;
 
 public class AddGuestController {
     private String nameStaffLogin;
-    private Staffs staffs;
     private Rooms rooms;
     private Guests guests;
     private RoomDataSource roomDataSource;
@@ -71,13 +68,13 @@ public class AddGuestController {
     @FXML
     public void handleToAddGuest(Event e){
         if (Integer.parseInt(roomGuest.getText()) <= 0 || Integer.parseInt(roomGuest.getText()) > 10 ||
-        Integer.parseInt(floorGuest.getText()) <= 0 || Integer.parseInt(floorGuest.getText()) > 8){
+                Integer.parseInt(floorGuest.getText()) <= 0 || Integer.parseInt(floorGuest.getText()) > 8){
             error.setText("Fill in wrong information. Please enter it again.");
         }
         else {
             if (!rooms.checkRoom(Integer.parseInt(roomGuest.getText()), Integer.parseInt(floorGuest.getText()))) {
                 if (rooms.checkNumGuest(Integer.parseInt(roomGuest.getText()), Integer.parseInt(floorGuest.getText()))) {
-                    GuestInformation guestInformation = new GuestInformation(nameGuest.getText(), roomGuest.getText(), floorGuest.getText());
+                    GuestInformation guestInformation = new GuestInformation(nameGuest.getText(), Integer.parseInt(roomGuest.getText()), Integer.parseInt(floorGuest.getText()));
                     guestInformation.setType(rooms.findTypeRoom(Integer.parseInt(roomGuest.getText()), Integer.parseInt(floorGuest.getText())));
                     guests.add(guestInformation);
                     rooms.addGuest(Integer.parseInt(roomGuest.getText()), Integer.parseInt(floorGuest.getText()));

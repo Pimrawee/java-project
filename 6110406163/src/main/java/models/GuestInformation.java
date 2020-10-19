@@ -2,12 +2,12 @@ package models;
 
 public class GuestInformation {
     private String name;
-    private String room;
-    private String floor;
+    private int room;
+    private int floor;
     private String building;
     private String type;
 
-    public GuestInformation(String name, String room, String floor) {
+    public GuestInformation(String name, int room, int floor) {
         this.name = name;
         this.room = room;
         this.floor = floor;
@@ -18,11 +18,11 @@ public class GuestInformation {
         return name;
     }
 
-    public String getRoom() {
+    public int getRoom() {
         return room;
     }
 
-    public String getFloor() {
+    public int getFloor() {
         return floor;
     }
 
@@ -38,11 +38,11 @@ public class GuestInformation {
         this.name = name;
     }
 
-    public void setRoom(String room) {
+    public void setRoom(int room) {
         this.room = room;
     }
 
-    public void setFloor(String floor) {
+    public void setFloor(int floor) {
         this.floor = floor;
     }
 

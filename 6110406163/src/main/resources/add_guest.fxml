@@ -70,12 +70,12 @@
             <Font name="Alternate Gothic No.2 BT" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="525.0" layoutY="270.0" text="1-10">
+      <Label layoutX="525.0" layoutY="270.0" text="Please enter 1-10 numbers.">
          <font>
             <Font name="Alternate Gothic No.2 BT" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="525.0" layoutY="320.0" text="1-8">
+      <Label layoutX="525.0" layoutY="320.0" text="Please enter 1-8 numbers.">
          <font>
             <Font name="Alternate Gothic No.2 BT" size="24.0" />
          </font>
