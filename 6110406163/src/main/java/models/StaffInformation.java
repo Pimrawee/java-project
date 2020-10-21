@@ -1,22 +1,19 @@
 package models;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
-public class StaffInformation implements Comparable<StaffInformation>{
+public class StaffInformation{
     private String name;
     private String username;
     private String password;
-    private int dayLogin;
-    private int monthLogin;
-    private int yearLogin;
-    private int hourLogin;
-    private int minuteLogin;
+    private String date;
 
     public StaffInformation(String name, String username, String password) {
         this.name = name;
         this.username = username;
         this.password = password;
+        this.date = "";
     }
 
     public String getName() {
@@ -31,32 +28,8 @@ public class StaffInformation implements Comparable<StaffInformation>{
         return password;
     }
 
-    public int getDayLogin() {
-        return dayLogin;
-    }
-
-    public int getMonthLogin() {
-        return monthLogin;
-    }
-
-    public int getYearLogin() {
-        return yearLogin;
-    }
-
-    public int getHourLogin() {
-        return hourLogin;
-    }
-
-    public int getMinuteLogin() {
-        return minuteLogin;
-    }
-
-    public String getDate(){
-        return dayLogin + "/" + monthLogin + "/" + yearLogin;
-    }
-
-    public String getTime(){
-        return hourLogin + ":" + minuteLogin;
+    public String getDate() {
+        return date;
     }
 
     public void setName(String name) {
@@ -71,52 +44,17 @@ public class StaffInformation implements Comparable<StaffInformation>{
         this.password = password;
     }
 
-    public void setDayLogin(int dayLogin) {
-        this.dayLogin = dayLogin;
-    }
-
-    public void setMonthLogin(int monthLogin) {
-        this.monthLogin = monthLogin;
-    }
-
-    public void setYearLogin(int yearLogin) {
-        this.yearLogin = yearLogin;
-    }
-
-    public void setHourLogin(int hourLogin) {
-        this.hourLogin = hourLogin;
-    }
-
-    public void setMinuteLogin(int minuteLogin) {
-        this.minuteLogin = minuteLogin;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public void setDateTimeLogin(){
-        Calendar calendar = new GregorianCalendar();
-        this.dayLogin = calendar.get(Calendar.DATE);
-        this.monthLogin = calendar.get(Calendar.MONTH)+1;
-        this.yearLogin = calendar.get(Calendar.YEAR);
-        this.hourLogin = calendar.get(Calendar.HOUR_OF_DAY);
-        this.minuteLogin = calendar.get(Calendar.MINUTE);
+        String login = new SimpleDateFormat("dd/MM/yy HH:mm:ss").format(Calendar.getInstance().getTime());
+        this.date = login;
     }
 
     @Override
     public String toString() {
-        return getDate() + " " + getTime() + " " + getName() + " " + getUsername() + " " + getPassword();
-    }
-
-    @Override
-    public int compareTo(StaffInformation o) {
-        if (this.getYearLogin() > o.getYearLogin()) return 1;
-        if (this.getYearLogin() < o.getYearLogin()) return -1;
-        if (this.getMonthLogin() > o.getMonthLogin()) return 1;
-        if (this.getMonthLogin() < o.getMonthLogin()) return -1;
-        if (this.getDayLogin() > o.getDayLogin()) return 1;
-        if (this.getDayLogin() < o.getDayLogin()) return -1;
-        if (this.getHourLogin() > o.getHourLogin()) return 1;
-        if (this.getHourLogin() < o.getHourLogin()) return -1;
-        if (this.getMinuteLogin() > o.getMinuteLogin()) return 1;
-        if (this.getMinuteLogin() < o.getMinuteLogin()) return -1;
-        return 0;
+        return getDate() + " " + getName() + " " + getUsername() + " " + getPassword();
     }
 }

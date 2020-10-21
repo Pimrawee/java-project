@@ -40,12 +40,8 @@ public class StaffFileDataSource implements StaffDataSource{
         String line = "";
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
-            StaffInformation staffInformation = new StaffInformation(data[5].trim(), data[6].trim(), data[7].trim());
-            staffInformation.setDayLogin(Integer.parseInt(data[0].trim()));
-            staffInformation.setMonthLogin(Integer.parseInt(data[1].trim()));
-            staffInformation.setYearLogin(Integer.parseInt(data[2].trim()));
-            staffInformation.setHourLogin(Integer.parseInt(data[3].trim()));
-            staffInformation.setMinuteLogin(Integer.parseInt(data[4].trim()));
+            StaffInformation staffInformation = new StaffInformation(data[1].trim(), data[2].trim(), data[3].trim());
+            staffInformation.setDate(data[0].trim());
             staffs.addStaff(staffInformation);
         }
         reader.close();
@@ -73,11 +69,7 @@ public class StaffFileDataSource implements StaffDataSource{
             fileWriter = new FileWriter(file);
             BufferedWriter writer = new BufferedWriter(fileWriter);
             for (StaffInformation s : staffs.toList()) {
-                String line = s.getDayLogin() + ","
-                        + s.getMonthLogin() + ","
-                        + s.getYearLogin() + ","
-                        + s.getHourLogin() + ","
-                        + s.getMinuteLogin() + ","
+                String line = s.getDate() + ","
                         + s.getName() + ","
                         + s.getUsername() + ","
                         + s.getPassword();

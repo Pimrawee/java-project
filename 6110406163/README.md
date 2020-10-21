@@ -8,7 +8,7 @@
 
 ## วิธีการติดตั้งและ run ไฟล์ jar
 * กรณีที่ double click ได้ 
-    - เปิด Folder ที่ clone โปรเจคมา แล้วเข้าไปที่ \6110406163\target\6110406163 จากนั้น double click ที่ jar file ชื่อว่า 6110406163.jar 
+    - เปิด Folder ที่ clone โปรเจคมา แล้วเข้าไปที่ 6110406163\jar File and pdf จากนั้น double click ที่ jar file ชื่อว่า 6110406163.jar 
 * กรณีที่ double click ไม่ได้
     - เปิด command ขึ้นมาแล้วเปลี่ยน directory ไปที่ Folder ที่มี jar file อยู่ และใช้คำสั่ง java -jar 6110406163.jar
 
@@ -20,29 +20,27 @@
     - AdministratorController.java เป็น controller ใช้ควบคุม administrator.fxml
     - StaffController.java เป็น controller ใช้ควบคุม staff.fxml
     - SetRoomInformationController.java เป็น controller ใช้ควบคุม set_room_information.fxml
-    - AddGuestController.java เป็น controller ใช้ควบคุม add_guest.fxml
     - ReceiveLetterController.java เป็น controller ใช้ควบคุม receive_letter.fxml
     - ReceiveDocumentController.java เป็น controller ใช้ควบคุม receive_document.fxml
     - ReceiveParcelController.java เป็น controller ใช้ควบคุม receive_parcel.fxml
-    - StatusController.java เป็น controller ใช้ควบคุม status.fxml
 * models
     - Document.java เก็บข้อมูลของเอกสาร
-    - GuestInformation เก็บข้อมูลของผู้เข้าพัก
-    - Guests เก็บ Object ของผู้เข้าพักใน ArrayList
+    - GuestInformation.java เก็บข้อมูลของผู้เข้าพัก
+    - Guests.java เก็บ Object ของผู้เข้าพักใน ArrayList
     - Letter.java เก็บข้อมูลของจดหมาย
     - Locker.java เก็บ Object ของจดหมาย เอกสาร พัสดุใส่ใน ArrayList
     - Parcel.java เก็บข้อมูลของพัสดุ
-    - RoomInformation เก็บข้อมูลของห้องพัก
-    - Rooms เก็บ Object ของห้องพักใน ArrayList
+    - RoomInformation.java เก็บข้อมูลของห้องพัก
+    - Rooms.java เก็บ Object ของห้องพักใน ArrayList
     - StaffInformation.java เก็บข้อมูลของเจ้าหน้าที่ส่วนกลาง
     - Staffs.java เก็บ Object ของเจ้าหน้าที่ส่วนกลางใน ArrayList
 * services
-    - GuestDataSource เก็บ method ที่ใช้ใน GuestFileDataSource
-    - GuestFileDataSource เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของผู้เข้าพัก
-    - RoomDataSource เก็บ method ที่ใช้ใน RoomFileDataSource
-    - RoomFileDataSource เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของการกำหนดข้อมูลห้อง
-    - StaffDataSource เก็บ method ที่ใช้ใน StaffFileDataSource
-    - StaffFileDataSource เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของเจ้าหน้าที่ส่วนกลาง
+    - GuestDataSource.java เก็บ method ที่ใช้ใน GuestFileDataSource
+    - GuestFileDataSource.java เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของผู้เข้าพัก
+    - RoomDataSource.java เก็บ method ที่ใช้ใน RoomFileDataSource
+    - RoomFileDataSource.java เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของการกำหนดข้อมูลห้อง
+    - StaffDataSource.java เก็บ method ที่ใช้ใน StaffFileDataSource
+    - StaffFileDataSource.java เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของเจ้าหน้าที่ส่วนกลาง
 * resources
     - โฟลเดอร์ image
         - profile.jpg
@@ -52,12 +50,10 @@
     - administrator.fxml แสดงหน้าสมัครรหัสผ่านให้กับเจ้าหน้าที่ส่วนกลาง และตารางวันและเวลาที่เจ้าหน้าที่ส่วนกลางเข้าใชัระบบ
     - staff.fxml แสดงหน้าข้อมูลของผู้เข้าพัก
     - set_room_information.fxml แสดงหน้ากรอกข้อมูลของห้องพัก
-    - add_guest.fxml แสดงหน้ากรอกข้อมูลของผู้เข้าพัก
     - receive_letter.fxml แสดงหน้ากรอกข้อมูลการรับจดหมาย
     - receive_document.fxml แสดงหน้ากรอกข้อมูลการรับเอกสาร
     - receive_parcel.fxml แสดงหน้ากรอกข้อมูลการรับพัสดุ
-    - status.fxml แสดงหน้าแก้ไขสถานะเมื่อผู้เข้าพักมารับสิ่งของที่อยู่กับเจ้าหน้าที่ส่วนกลาง และตารางข้อมูลของสิ่งของที่มาส่งที่คอนโด
-    
+
 ## สิ่งที่ทำในแต่ละสัปดาห์
 * สัปดาห์ที่ 1
     - ออกแบบ GUI
@@ -91,4 +87,17 @@
     - แก้ไข fxml add_guest, set_room_information ใน Package resources
     - อ่านเขียนไฟล์ csv ที่เก็บข้อมูลการตั้งค่าห้องพัก
     - อ่านเขียนไฟล์ csv ที่เก็บข้อมูลผู้เข้าพัก
+    - แก้ไขไฟล์ README.md
+* สัปดาห์ที่ 7
+    - แก้ไข class AdministratorController, SetRoomInformationController, StaffController ใน Package controllers
+    - แก้ไข class GuestInformation, RoomInformation, Rooms, StaffInformation ใน Package models
+    - แก้ไข class GuestFileDataSource, RoomFileDataSource, StaffFileDataSource ใน Package services
+    - แก้ไข fxml administrator, receive_document, receive_letter, receive_parcel, set_room_information, staff ใน Package resources
+    - ลบ fxml add_guest, status ใน Package resources
+    - ลบ class AddGuestController, StatusController ใน Package controllers
+    - แสดงตารางการเข้าระบบของเจ้าหน้าที่ส่วนกลางและเรียงวันเวลาที่เจ้าหน้าที่ส่วนกลางเข้าระบบล่าสุดก่อน
+    - แสดงตารางข้อมูลผู้เข้าพักและเรียงห้องพักจากน้อยไปมาก
+    - เพิ่ม Folder ชื่อ jar File and pdf
+    - ย้าย 6110406163.jar ไปไว้ในใน Folder jar File and pdf
+    - เพิ่ม 6110406163.pdf (ยังไม่เสร็จเพราะโปรแกรมยังไม่สมบูรณ์) ใน Folder jar File and pdf
     - แก้ไขไฟล์ README.md

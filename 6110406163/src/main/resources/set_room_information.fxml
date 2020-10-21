@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -48,8 +47,6 @@
             <Font name="Alternate Gothic No.2 BT" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="room" layoutX="315.0" layoutY="220.0" />
-      <TextField fx:id="floor" layoutX="315.0" layoutY="270.0" />
       <Button fx:id="back" layoutX="10.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleToBack" style="-fx-background-color: #336600;" text="Back" textFill="WHITE">
          <font>
             <Font name="Bodoni MT Bold" size="18.0" />
@@ -71,15 +68,7 @@
             <Font name="Alternate Gothic No.2 BT" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="520.0" layoutY="270.0" text="Please enter 1-8 numbers.">
-         <font>
-            <Font name="Alternate Gothic No.2 BT" size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="520.0" layoutY="220.0" text="Please enter 1-10 numbers.">
-         <font>
-            <Font name="Alternate Gothic No.2 BT" size="24.0" />
-         </font>
-      </Label>
+      <ChoiceBox fx:id="room" layoutX="319.0" layoutY="219.0" prefHeight="31.0" prefWidth="187.0" />
+      <ChoiceBox fx:id="floor" layoutX="320.0" layoutY="269.0" prefHeight="31.0" prefWidth="187.0" />
    </children>
 </AnchorPane>

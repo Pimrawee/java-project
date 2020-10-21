@@ -20,18 +20,18 @@ public class Rooms {
         return false;
     }
 
-    public boolean checkRoom(int room, int floor){ // เช็คว่ามีการเซ็ตห้องไปแล้วหรือยัง
+    public boolean checkRoom(String room, String floor){ // เช็คว่ามีการเซ็ตห้องไปแล้วหรือยัง
         for (RoomInformation r : rooms){
-            if (r.getRoom() == room && r.getFloor() == floor) { // มีเลขห้องกับเลขชั้นที่เซ็ตไว้แล้ว
+            if (r.getRoom().equals(room) && r.getFloor().equals(floor)) { // มีเลขห้องกับเลขชั้นที่เซ็ตไว้แล้ว
                 return false;
             }
         }
         return true;
     }
 
-    public boolean checkNumGuest(int room, int floor){ // เช็คว่ามีคนพักอยู่ในห้องไหม
+    public boolean checkNumGuest(String room, String floor){ // เช็คว่ามีคนพักอยู่ในห้องไหม
         for (RoomInformation r : rooms){
-            if (r.getRoom() == room && r.getFloor() == floor){
+            if (r.getRoom().equals(room) && r.getFloor().equals(floor)){
                 if (r.getNumGuests() >= 0 && r.getNumGuests() < r.getMaxGuests()){
                     return true;
                 }
@@ -40,21 +40,30 @@ public class Rooms {
         return false;
     }
 
-    public String findTypeRoom(int room, int floor){
+    public String findTypeRoom(String room, String floor){
         for (RoomInformation r : rooms){
-            if (r.getRoom() == room && r.getFloor() == floor){
+            if (r.getRoom().equals(room) && r.getFloor().equals(floor)){
                 return r.getType();
             }
         }
         return "";
     }
 
-    public void addGuest(int room, int floor){
+    public void addGuest(String room, String floor){
         for (RoomInformation r : rooms){
-            if (r.getRoom() == room && r.getFloor() == floor){
+            if (r.getRoom().equals(room) && r.getFloor().equals(floor)){
                 r.setNumGuests(r.getNumGuests()+1);
             }
         }
+    }
+
+    public String roomSet(){
+        for (RoomInformation r : rooms) {
+            if (r.getNumGuests() >= 0 || r.getNumGuests() < r.getMaxGuests()) {
+                return r.getRoomCon();
+            }
+        }
+        return "";
     }
 
     public ArrayList<RoomInformation> toList() {

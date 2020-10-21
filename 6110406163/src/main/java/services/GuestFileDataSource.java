@@ -40,9 +40,10 @@ public class GuestFileDataSource implements GuestDataSource{
         String line = "";
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
-            GuestInformation guestInformation = new GuestInformation(data[0].trim(), Integer.parseInt(data[1].trim()), Integer.parseInt(data[2].trim()));
-            guestInformation.setBuilding(data[3].trim());
+            GuestInformation guestInformation = new GuestInformation(data[0].trim(), data[3].trim(), data[2].trim());
+            guestInformation.setBuilding(data[1].trim());
             guestInformation.setType(data[4].trim());
+            guestInformation.setRoomGuestCon(data[5].trim());
             guests.add(guestInformation);
         }
         reader.close();
@@ -71,10 +72,11 @@ public class GuestFileDataSource implements GuestDataSource{
             BufferedWriter writer = new BufferedWriter(fileWriter);
             for (GuestInformation r : guests.toList()) {
                 String line = r.getName() + ","
-                        + r.getRoom() + ","
-                        + r.getFloor() + ","
                         + r.getBuilding() + ","
-                        + r.getType();
+                        + r.getFloor() + ","
+                        + r.getRoom() + ","
+                        + r.getType() + ","
+                        + r.getRoomGuestCon();
                 writer.append(line);
                 writer.newLine();
             }

@@ -1,25 +1,26 @@
 package models;
 
 public class RoomInformation {
-    private int room;
-    private int floor;
+    private String room;
+    private String floor;
     private String building;
     private int maxGuests;
     private int numGuests;
     private String type;
+    private String roomCon;
 
-    public RoomInformation(int room, int floor, String type) {
+    public RoomInformation(String room, String floor, String type) {
         this.room = room;
         this.floor = floor;
         this.building = "1";
         this.type = type;
     }
 
-    public int getRoom() {
+    public String getRoom() {
         return room;
     }
 
-    public int getFloor() {
+    public String getFloor() {
         return floor;
     }
 
@@ -39,11 +40,15 @@ public class RoomInformation {
         return type;
     }
 
-    public void setRoom(int room) {
+    public String getRoomCon() {
+        return roomCon = getBuilding() + getFloor() + getRoom();
+    }
+
+    public void setRoom(String room) {
         this.room = room;
     }
 
-    public void setFloor(int floor) {
+    public void setFloor(String floor) {
         this.floor = floor;
     }
 
@@ -61,6 +66,10 @@ public class RoomInformation {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void setRoomCon(String roomCon) {
+        this.roomCon = roomCon;
     }
 
     @Override

@@ -40,11 +40,12 @@ public class RoomFileDataSource implements RoomDataSource{
         String line = "";
         while ((line = reader.readLine()) != null) {
             String[] data = line.split(",");
-            RoomInformation roomInformation = new RoomInformation(Integer.parseInt(data[0].trim()),
-                    Integer.parseInt(data[1].trim()), data[3].trim());
-            roomInformation.setBuilding(data[2].trim());
+            RoomInformation roomInformation = new RoomInformation(data[2].trim(),
+                    data[1].trim(), data[3].trim());
+            roomInformation.setBuilding(data[0].trim());
             roomInformation.setMaxGuests(Integer.parseInt(data[4].trim()));
             roomInformation.setNumGuests(Integer.parseInt(data[5].trim()));
+            roomInformation.setRoomCon(data[6].trim());
             rooms.add(roomInformation);
         }
         reader.close();
@@ -72,12 +73,13 @@ public class RoomFileDataSource implements RoomDataSource{
             fileWriter = new FileWriter(file);
             BufferedWriter writer = new BufferedWriter(fileWriter);
             for (RoomInformation r : rooms.toList()) {
-                String line =  r.getRoom() + ","
+                String line = r.getBuilding() + ","
                         + r.getFloor() + ","
-                        + r.getBuilding() + ","
+                        + r.getRoom() + ","
                         + r.getType() + ","
                         + r.getMaxGuests() + ","
-                        + r.getNumGuests();
+                        + r.getNumGuests() + ","
+                        + r.getRoomCon();
                 writer.append(line);
                 writer.newLine();
             }
