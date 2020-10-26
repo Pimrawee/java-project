@@ -11,12 +11,12 @@
    <children>
       <Button layoutX="15.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleToBack" style="-fx-background-color: cc66ff;" text="Back" textFill="WHITE">
          <font>
-            <Font name="Bodoni MT Bold" size="18.0" />
+            <Font name="Cambria" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="288.0" layoutY="85.0" text="Profile">
+      <Label layoutX="230.0" layoutY="80.0" text="Profile">
          <font>
-            <Font name="Vivaldi Italic" size="96.0" />
+            <Font name="Arial Black" size="96.0" />
          </font>
       </Label>
       <ImageView fitHeight="240.0" fitWidth="500.0" layoutX="60.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
