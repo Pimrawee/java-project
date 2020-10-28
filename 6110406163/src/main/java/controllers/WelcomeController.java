@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import models.Guests;
+import models.Locker;
 import models.Rooms;
 import models.Staffs;
 import services.*;
@@ -17,18 +18,22 @@ public class WelcomeController {
     private Staffs staffs = new Staffs();
     private Rooms rooms = new Rooms();
     private Guests guests = new Guests();
+    private Locker locker = new Locker();
     private StaffDataSource staffDataSource;
     private RoomDataSource roomDataSource;
     private GuestDataSource guestDataSource;
+    private LockerDataSource lockerDataSource;
 
     @FXML
     public void initialize(){
         staffDataSource = new StaffFileDataSource("data", "staffs.csv");
         roomDataSource = new RoomFileDataSource("data", "rooms.csv");
         guestDataSource = new GuestFileDataSource("data", "guests.csv");
+        lockerDataSource = new LockerFileDataSource("data", "locker.csv");
         staffs = staffDataSource.getStaffsData();
         rooms = roomDataSource.getRoomsData();
         guests = guestDataSource.getGuestsData();
+        locker = lockerDataSource.getLockerData();
     }
 
     public void setStaffs(Staffs staffs) {
@@ -53,6 +58,14 @@ public class WelcomeController {
 
     public void setGuestDataSource(GuestDataSource guestDataSource) {
         this.guestDataSource = guestDataSource;
+    }
+
+    public void setLocker(Locker locker) {
+        this.locker = locker;
+    }
+
+    public void setLockerDataSource(LockerDataSource lockerDataSource) {
+        this.lockerDataSource = lockerDataSource;
     }
 
     @FXML
@@ -82,6 +95,8 @@ public class WelcomeController {
         loginController.setRoomDataSource(roomDataSource);
         loginController.setGuests(guests);
         loginController.setGuestDataSource(guestDataSource);
+        loginController.setLocker(locker);
+        loginController.setLockerDataSource(lockerDataSource);
         stage.show();
     }
 

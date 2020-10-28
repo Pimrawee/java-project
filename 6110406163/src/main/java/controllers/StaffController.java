@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.*;
 import services.GuestDataSource;
+import services.LockerDataSource;
 import services.RoomDataSource;
 
 import java.io.IOException;
@@ -23,6 +24,8 @@ public class StaffController {
     private GuestDataSource guestDataSource;
     private String nameStaffLogin;
     private ObservableList<GuestInformation> guestObservableList;
+    private Locker locker;
+    private LockerDataSource lockerDataSource;
 
     @FXML
     Label nameStaff;
@@ -54,6 +57,14 @@ public class StaffController {
 
     public void setGuestDataSource(GuestDataSource guestDataSource) {
         this.guestDataSource = guestDataSource;
+    }
+
+    public void setLocker(Locker locker) {
+        this.locker = locker;
+    }
+
+    public void setLockerDataSource(LockerDataSource lockerDataSource) {
+        this.lockerDataSource = lockerDataSource;
     }
 
     @FXML
@@ -140,6 +151,14 @@ public class StaffController {
         Stage stage = (Stage) b.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/receive_letter.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
+        ReceiveLetterController receiveLetterController = loader.getController();
+        receiveLetterController.setNameStaffLogin(nameStaffLogin);
+        receiveLetterController.setRooms(rooms);
+        receiveLetterController.setRoomDataSource(roomDataSource);
+        receiveLetterController.setGuests(guests);
+        receiveLetterController.setGuestDataSource(guestDataSource);
+        receiveLetterController.setLocker(locker);
+        receiveLetterController.setLockerDataSource(lockerDataSource);
         stage.show();
     }
 
@@ -149,6 +168,14 @@ public class StaffController {
         Stage stage = (Stage) b.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/receive_document.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
+        ReceiveDocumentController receiveDocumentController = loader.getController();
+        receiveDocumentController.setNameStaffLogin(nameStaffLogin);
+        receiveDocumentController.setRooms(rooms);
+        receiveDocumentController.setRoomDataSource(roomDataSource);
+        receiveDocumentController.setGuests(guests);
+        receiveDocumentController.setGuestDataSource(guestDataSource);
+        receiveDocumentController.setLocker(locker);
+        receiveDocumentController.setLockerDataSource(lockerDataSource);
         stage.show();
     }
 
@@ -158,6 +185,14 @@ public class StaffController {
         Stage stage = (Stage) b.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/receive_parcel.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
+        ReceiveParcelController receiveParcelController = loader.getController();
+        receiveParcelController.setNameStaffLogin(nameStaffLogin);
+        receiveParcelController.setRooms(rooms);
+        receiveParcelController.setRoomDataSource(roomDataSource);
+        receiveParcelController.setGuests(guests);
+        receiveParcelController.setGuestDataSource(guestDataSource);
+        receiveParcelController.setLocker(locker);
+        receiveParcelController.setLockerDataSource(lockerDataSource);
         stage.show();
     }
 
@@ -172,6 +207,8 @@ public class StaffController {
         welcomeController.setGuests(guests);
         welcomeController.setRoomDataSource(roomDataSource);
         welcomeController.setGuestDataSource(guestDataSource);
+        welcomeController.setLocker(locker);
+        welcomeController.setLockerDataSource(lockerDataSource);
         stage.show();
     }
 }

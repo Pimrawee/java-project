@@ -10,9 +10,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.Guests;
+import models.Locker;
 import models.Rooms;
 import models.Staffs;
 import services.GuestDataSource;
+import services.LockerDataSource;
 import services.RoomDataSource;
 import services.StaffDataSource;
 
@@ -27,6 +29,8 @@ public class LoginController {
     private RoomDataSource roomDataSource;
     private GuestDataSource guestDataSource;
     private String nameStaffLogin;
+    private Locker locker;
+    private LockerDataSource lockerDataSource;
 
     @FXML
     TextField username;
@@ -65,6 +69,14 @@ public class LoginController {
         this.guestDataSource = guestDataSource;
     }
 
+    public void setLocker(Locker locker) {
+        this.locker = locker;
+    }
+
+    public void setLockerDataSource(LockerDataSource lockerDataSource) {
+        this.lockerDataSource = lockerDataSource;
+    }
+
     @FXML
     public void initialize(){
         error.setOpacity(0);
@@ -84,6 +96,8 @@ public class LoginController {
                 stage.show();
             }
             else {
+                username.clear();
+                password.clear();
                 error.setText("Invalid Account.");
                 error.setOpacity(1);
             }
@@ -104,14 +118,20 @@ public class LoginController {
                     staffController.setGuests(guests);
                     staffController.setRoomDataSource(roomDataSource);
                     staffController.setGuestDataSource(guestDataSource);
+                    staffController.setLocker(locker);
+                    staffController.setLockerDataSource(lockerDataSource);
                     stage.show();
                 }
                 else {
+                    username.clear();
+                    password.clear();
                     error.setText("Invalid Account.");
                     error.setOpacity(1);
                 }
             }
             else {
+                username.clear();
+                password.clear();
                 error.setText("Invalid Account.");
                 error.setOpacity(1);
             }
@@ -131,6 +151,8 @@ public class LoginController {
         welcomeController.setStaffDataSource(staffDataSource);
         welcomeController.setRoomDataSource(roomDataSource);
         welcomeController.setGuestDataSource(guestDataSource);
+        welcomeController.setLocker(locker);
+        welcomeController.setLockerDataSource(lockerDataSource);
         stage.show();
     }
 }

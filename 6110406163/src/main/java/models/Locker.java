@@ -3,26 +3,49 @@ package models;
 import java.util.ArrayList;
 
 public class Locker {
-    private ArrayList<Object> locker;
+    private ArrayList<Letter> lockerL;
+    private ArrayList<Document> lockerD;
+    private ArrayList<Parcel> lockerP;
 
     public Locker() {
-        locker = new ArrayList<>();
+        lockerL = new ArrayList<>();
+        lockerD = new ArrayList<>();
+        lockerP = new ArrayList<>();
     }
 
-    public void addObject(Object object){
-        locker.add(object);
+    public void addLetter(Letter letter){
+        lockerL.add(letter);
     }
 
-    public void removeObject(Object object){
-        locker.remove(object);
+    public void addDocument(Document document){
+        lockerD.add(document);
     }
 
-    @Override
-    public String toString() {
-        String str = "";
-        for (Object o : locker){
-            str += o.toString() + "\n";
-        }
-        return str;
+    public void addParcel(Parcel parcel){
+        lockerP.add(parcel);
+    }
+
+    public void removeLetter(Letter letter){
+        lockerL.remove(letter);
+    }
+
+    public void removeDocument(Document document){
+        lockerD.remove(document);
+    }
+
+    public void removeParcel(Parcel parcel){
+        lockerP.remove(parcel);
+    }
+
+    public ArrayList<Letter> toListLetter() {
+        return lockerL;
+    }
+
+    public ArrayList<Document> toListDocument() {
+        return lockerD;
+    }
+
+    public ArrayList<Parcel> toListParcel() {
+        return lockerP;
     }
 }

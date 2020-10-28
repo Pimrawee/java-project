@@ -1,19 +1,55 @@
 package controllers;
 
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import models.Guests;
+import models.*;
 import services.GuestDataSource;
+import services.LockerDataSource;
+import services.RoomDataSource;
 
 import java.io.IOException;
 
 public class ReceiveParcelController {
+    private String nameStaffLogin;
+    private Rooms rooms;
+    private RoomDataSource roomDataSource;
     private Guests guests;
     private GuestDataSource guestDataSource;
+    private Locker locker;
+    private ObservableList<Parcel> parcelObservableList;
+    private LockerDataSource lockerDataSource;
+
+    @FXML
+    Label nameStaff, error;
+
+    @FXML
+    TextField receiverParcel, senderParcel, companyParcel, trackingNumberParcel, sizeParcel;
+
+    @FXML
+    ChoiceBox roomList;
+
+    @FXML
+    TableView parcelTable;
+
+    public void setNameStaffLogin(String nameStaffLogin) {
+        this.nameStaffLogin = nameStaffLogin;
+    }
+
+    public void setRooms(Rooms rooms) {
+        this.rooms = rooms;
+    }
+
+    public void setRoomDataSource(RoomDataSource roomDataSource) {
+        this.roomDataSource = roomDataSource;
+    }
 
     public void setGuests(Guests guests) {
         this.guests = guests;
@@ -23,6 +59,91 @@ public class ReceiveParcelController {
         this.guestDataSource = guestDataSource;
     }
 
+    public void setLocker(Locker locker) {
+        this.locker = locker;
+    }
+
+    public void setLockerDataSource(LockerDataSource lockerDataSource) {
+        this.lockerDataSource = lockerDataSource;
+    }
+
+    @FXML
+    public void initialize(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                nameStaff.setText(nameStaffLogin);
+                error.setOpacity(0);
+
+                setRoomList();
+
+                if(!locker.toListParcel().isEmpty()) {
+                    showTableParcel();
+                }
+            }
+        });
+    }
+
+    public void setRoomList(){
+        for (GuestInformation g : guests.toList()){
+            if (!g.getName().equals("")){
+                roomList.getItems().add(g.getRoomGuestCon());
+            }
+        }
+    }
+
+    public void showTableParcel(){
+        parcelObservableList = FXCollections.observableArrayList(locker.toListParcel());
+        parcelTable.setItems(parcelObservableList);
+
+        TableColumn timeCol = new TableColumn("Date & Time");
+        TableColumn receiverCol = new TableColumn("Receiver");
+        TableColumn roomCol = new TableColumn("Room");
+        TableColumn senderCol = new TableColumn("Sender");
+        TableColumn companyCol = new TableColumn("Company");
+        TableColumn trackingNumberCol = new TableColumn("Tracking No.");
+        TableColumn sizeCol = new TableColumn("Size");
+
+        timeCol.setCellValueFactory(new PropertyValueFactory<Locker, String>("time"));
+        receiverCol.setCellValueFactory(new PropertyValueFactory<Locker, String>("receiver"));
+        roomCol.setCellValueFactory(new PropertyValueFactory<Locker, String>("roomReceiver"));
+        senderCol.setCellValueFactory(new PropertyValueFactory<Locker, String>("sender"));
+        companyCol.setCellValueFactory(new PropertyValueFactory<Locker, String>("company"));
+        trackingNumberCol.setCellValueFactory(new PropertyValueFactory<Locker, String>("trackingNumber"));
+        sizeCol.setCellValueFactory(new PropertyValueFactory<Locker, String>("size"));
+
+        parcelTable.getColumns().addAll(timeCol,receiverCol , roomCol, senderCol, companyCol, trackingNumberCol, sizeCol);
+
+        timeCol.setSortType(TableColumn.SortType.DESCENDING);
+        parcelTable.getSortOrder().add(timeCol);
+    }
+
+    @FXML
+    public void handleToStaffReceiveParcel(ActionEvent event){
+        if (guests.checkGuest(receiverParcel.getText(), (String) roomList.getValue())) {
+            Parcel parcel = new Parcel(receiverParcel.getText(), (String) roomList.getValue(), senderParcel.getText(), sizeParcel.getText(), companyParcel.getText(), trackingNumberParcel.getText());
+            parcel.setDateTimeReceive();
+            locker.addParcel(parcel);
+            lockerDataSource.setLockerData(locker);
+            error.setText("Successful!");
+        }
+        else {
+            error.setText("Invalid Information.");
+        }
+        error.setOpacity(1);
+        receiverParcel.clear();
+        roomList.getItems().clear();
+        senderParcel.clear();
+        companyParcel.clear();
+        trackingNumberParcel.clear();
+        sizeParcel.clear();
+        parcelTable.getColumns().clear();
+        parcelTable.getItems().clear();
+        setRoomList();
+        showTableParcel();
+    }
+
+
     @FXML
     public void handleToLogout(ActionEvent event) throws IOException {
         Button b = (Button) event.getSource();
@@ -30,8 +151,12 @@ public class ReceiveParcelController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/welcome.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
         WelcomeController welcomeController = loader.getController();
+        welcomeController.setRooms(rooms);
+        welcomeController.setRoomDataSource(roomDataSource);
         welcomeController.setGuests(guests);
         welcomeController.setGuestDataSource(guestDataSource);
+        welcomeController.setLocker(locker);
+        welcomeController.setLockerDataSource(lockerDataSource);
         stage.show();
     }
 
@@ -42,8 +167,13 @@ public class ReceiveParcelController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/staff.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
         StaffController staffController = loader.getController();
+        staffController.setNameStaffLogin(nameStaffLogin);
+        staffController.setRooms(rooms);
+        staffController.setRoomDataSource(roomDataSource);
         staffController.setGuests(guests);
         staffController.setGuestDataSource(guestDataSource);
+        staffController.setLocker(locker);
+        staffController.setLockerDataSource(lockerDataSource);
         stage.show();
     }
 }

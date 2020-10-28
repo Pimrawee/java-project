@@ -13,7 +13,7 @@
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: #336600;">
          <children>
-            <Label layoutX="15.0" layoutY="15.0" prefHeight="21.0" prefWidth="438.0" text="nameStaff" textFill="WHITE">
+            <Label fx:id="nameStaff" layoutX="15.0" layoutY="15.0" prefHeight="21.0" prefWidth="438.0" text="nameStaff" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="48.0" />
                </font>
@@ -55,15 +55,15 @@
             <Font name="Cambria" size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="110.0" layoutY="180.0" prefHeight="31.0" prefWidth="150.0" />
-      <TextField layoutX="110.0" layoutY="260.0" prefHeight="31.0" prefWidth="150.0" />
-      <TextField layoutX="110.0" layoutY="300.0" prefHeight="31.0" prefWidth="150.0" />
+      <TextField fx:id="receiverDocument" layoutX="110.0" layoutY="180.0" prefHeight="31.0" prefWidth="150.0" />
+      <TextField fx:id="senderDocument" layoutX="110.0" layoutY="260.0" prefHeight="31.0" prefWidth="150.0" />
+      <TextField fx:id="sizeDocument" layoutX="110.0" layoutY="300.0" prefHeight="31.0" prefWidth="150.0" />
       <Label layoutX="5.0" layoutY="380.0" text="Level of Importance :">
          <font>
             <Font name="Cambria" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="45.0" layoutY="480.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #336600;" text="Staff Receive" textFill="WHITE">
+      <Button layoutX="45.0" layoutY="470.0" mnemonicParsing="false" onAction="#handleToStaffReceiveDocument" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #336600;" text="Staff Receive" textFill="WHITE">
          <font>
             <Font name="Cambria" size="18.0" />
          </font>
@@ -73,10 +73,10 @@
             <Font name="Cambria" size="18.0" />
          </font>
       </Button>
-      <ChoiceBox layoutX="110.0" layoutY="220.0" prefWidth="150.0" />
-      <ChoiceBox layoutX="110.0" layoutY="420.0" prefHeight="31.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="roomList" layoutX="110.0" layoutY="220.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="levelList" layoutX="110.0" layoutY="420.0" prefHeight="31.0" prefWidth="150.0" />
       <Line endX="-100.0" endY="466.0" layoutX="365.0" layoutY="125.0" startX="-100.0" />
-      <TableView fx:id="staffsTable" layoutX="270.0" layoutY="130.0" prefHeight="400.0" prefWidth="525.0">
+      <TableView fx:id="documentTable" layoutX="270.0" layoutY="130.0" prefHeight="400.0" prefWidth="525.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
@@ -84,6 +84,11 @@
       <Label layoutX="78.0" layoutY="340.0" text="Example Size : 9.2x12.4" textFill="#da0a0a">
          <font>
             <Font name="Cambria" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="error" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="520.0" prefHeight="29.0" prefWidth="230.0" text="error" textAlignment="CENTER" textFill="#b51515">
+         <font>
+            <Font name="Cambria" size="20.0" />
          </font>
       </Label>
    </children>

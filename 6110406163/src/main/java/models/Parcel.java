@@ -1,11 +1,12 @@
 package models;
 
-public class Parcel extends Letter{
+public class Parcel extends Letter {
     private String company;
     private String trackingNumber;
 
-    public Parcel(String receiver, String sender, String size, String company, String trackingNumber) {
-        super(receiver, sender, size);
+    public Parcel(String receiver, String roomReceiver, String sender, String size, String company, String trackingNumber) {
+        super(receiver, roomReceiver, sender, size);
+        super.setType("Parcel");
         this.company = company;
         this.trackingNumber = trackingNumber;
     }

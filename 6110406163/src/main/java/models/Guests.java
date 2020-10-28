@@ -13,6 +13,15 @@ public class Guests {
         guests.add(guestInformation);
     }
 
+    public boolean checkGuest(String nameGuest, String room){
+        for (GuestInformation g : guests){
+            if (g.getName().equals(nameGuest) && g.getRoomGuestCon().equals(room)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<GuestInformation> toList() {
         return guests;
     }

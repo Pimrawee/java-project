@@ -57,7 +57,7 @@ public class AdministratorController {
         staffObservableList = FXCollections.observableArrayList(staffs.toList());
         staffsTable.setItems(staffObservableList);
 
-        TableColumn timeCol = new TableColumn("Date Time");
+        TableColumn timeCol = new TableColumn("Date & Time");
         TableColumn nameStaffCol = new TableColumn("Name's Staff");
         TableColumn usernameCol = new TableColumn("Username");
         TableColumn passwordCol = new TableColumn("Password");
