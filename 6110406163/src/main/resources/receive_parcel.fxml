@@ -77,12 +77,12 @@
          </columnResizePolicy>
       </TableView>
       <ChoiceBox fx:id="roomList" layoutX="110.0" layoutY="200.0" prefWidth="150.0" />
-      <Button layoutX="45.0" layoutY="470.0" mnemonicParsing="false" onAction="#handleToStaffReceiveParcel" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #336600;" text="Staff Receive" textFill="WHITE">
+      <Button layoutX="45.0" layoutY="470.0" mnemonicParsing="false" onAction="#handleToAddParcel" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #336600;" text="Add" textFill="WHITE">
          <font>
             <Font name="Cambria" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="445.0" layoutY="540.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #336600;" text="Guest Receive" textFill="WHITE">
+      <Button layoutX="445.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleToRemoveParcel" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #336600;" text="Remove" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

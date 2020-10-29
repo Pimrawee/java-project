@@ -53,7 +53,7 @@
       <TextField fx:id="receiverLetter" layoutX="110.0" layoutY="180.0" prefHeight="31.0" prefWidth="150.0" />
       <TextField fx:id="senderLetter" layoutX="110.0" layoutY="260.0" prefHeight="31.0" prefWidth="150.0" />
       <TextField fx:id="sizeLetter" layoutX="110.0" layoutY="300.0" prefHeight="31.0" prefWidth="150.0" />
-      <Button layoutX="45.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleToStaffReceiveLetter" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #336600;" text="Staff Receive" textFill="WHITE">
+      <Button layoutX="45.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleToAddLetter" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #336600;" text="Add" textFill="WHITE">
          <font>
             <Font name="Cambria" size="18.0" />
          </font>
@@ -65,7 +65,7 @@
       </Label>
       <ChoiceBox fx:id="roomList" layoutX="110.0" layoutY="220.0" prefWidth="150.0" />
       <Line endX="-100.0" endY="466.0" layoutX="365.0" layoutY="125.0" startX="-100.0" />
-      <Button layoutX="445.0" layoutY="540.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #336600;" text="Guest Receive" textFill="WHITE">
+      <Button layoutX="445.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleToRemoveLetter" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #336600;" text="Remove" textFill="WHITE">
          <font>
             <Font name="Cambria" size="18.0" />
          </font>

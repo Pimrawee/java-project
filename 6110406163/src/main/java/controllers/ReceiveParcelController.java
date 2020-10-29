@@ -26,6 +26,7 @@ public class ReceiveParcelController {
     private Locker locker;
     private ObservableList<Parcel> parcelObservableList;
     private LockerDataSource lockerDataSource;
+    private Parcel parcel;
 
     @FXML
     Label nameStaff, error;
@@ -82,6 +83,12 @@ public class ReceiveParcelController {
                 }
             }
         });
+
+        parcelTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null){
+                parcel = (Parcel) newValue;
+            }
+        });
     }
 
     public void setRoomList(){
@@ -119,7 +126,7 @@ public class ReceiveParcelController {
     }
 
     @FXML
-    public void handleToStaffReceiveParcel(ActionEvent event){
+    public void handleToAddParcel(ActionEvent event){
         if (guests.checkGuest(receiverParcel.getText(), (String) roomList.getValue())) {
             Parcel parcel = new Parcel(receiverParcel.getText(), (String) roomList.getValue(), senderParcel.getText(), sizeParcel.getText(), companyParcel.getText(), trackingNumberParcel.getText());
             parcel.setDateTimeReceive();
@@ -141,6 +148,23 @@ public class ReceiveParcelController {
         parcelTable.getItems().clear();
         setRoomList();
         showTableParcel();
+    }
+
+    @FXML
+    public void handleToRemoveParcel(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Confirmation");
+        alert.setContentText("Are you sure?");
+        alert.showAndWait().ifPresent((btnType)->{
+            if (btnType == ButtonType.OK){
+                locker.removeParcel(parcel);
+                lockerDataSource.setLockerData(locker);
+                parcelTable.getColumns().clear();
+                parcelTable.getItems().clear();
+                showTableParcel();
+            }
+        });
     }
 
 

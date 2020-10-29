@@ -26,6 +26,7 @@ public class ReceiveLetterController {
     private Locker locker;
     private LockerDataSource lockerDataSource;
     private ObservableList<Letter> letterObservableList;
+    private Letter letter;
 
     @FXML
     ChoiceBox roomList;
@@ -82,6 +83,12 @@ public class ReceiveLetterController {
                 }
             }
         });
+
+        letterTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null){
+                letter = (Letter) newValue;
+            }
+        });
     }
 
     public void setRoomList(){
@@ -115,7 +122,7 @@ public class ReceiveLetterController {
     }
 
     @FXML
-    public void handleToStaffReceiveLetter(ActionEvent event){
+    public void handleToAddLetter(ActionEvent event){
         if (guests.checkGuest(receiverLetter.getText(), (String) roomList.getValue())) {
             Letter letter = new Letter(receiverLetter.getText(), (String) roomList.getValue(), senderLetter.getText(), sizeLetter.getText());
             letter.setDateTimeReceive();
@@ -135,6 +142,23 @@ public class ReceiveLetterController {
         letterTable.getItems().clear();
         setRoomList();
         showTableLetter();
+    }
+
+    @FXML
+    public void handleToRemoveLetter(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Confirmation");
+        alert.setContentText("Are you sure?");
+        alert.showAndWait().ifPresent((btnType)->{
+            if (btnType == ButtonType.OK){
+                locker.removeLetter(letter);
+                lockerDataSource.setLockerData(locker);
+                letterTable.getColumns().clear();
+                letterTable.getItems().clear();
+                showTableLetter();
+            }
+        });
     }
 
     @FXML

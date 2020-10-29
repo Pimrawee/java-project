@@ -26,6 +26,7 @@ public class ReceiveDocumentController {
     private Locker locker;
     private LockerDataSource lockerDataSource;
     private ObservableList<Document> documentObservableList;
+    private Document document;
     ObservableList<String> setLevelList = FXCollections.observableArrayList("Regular", "Secret", "Top Secret");
 
     @FXML
@@ -84,6 +85,12 @@ public class ReceiveDocumentController {
                 }
             }
         });
+
+        documentTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null){
+                document = (Document) newValue;
+            }
+        });
     }
 
     public void setRoomList(){
@@ -119,7 +126,7 @@ public class ReceiveDocumentController {
     }
 
     @FXML
-    public void handleToStaffReceiveDocument(ActionEvent event){
+    public void handleToAddDocument(ActionEvent event){
         if (guests.checkGuest(receiverDocument.getText(), (String) roomList.getValue())) {
             Document document = new Document(receiverDocument.getText(), (String) roomList.getValue(), senderDocument.getText(), sizeDocument.getText(), (String) levelList.getValue());
             document.setDateTimeReceive();
@@ -141,6 +148,23 @@ public class ReceiveDocumentController {
         levelList.setValue(setLevelList);
         setRoomList();
         showTableDocument();
+    }
+
+    @FXML
+    public void handleToRemoveDocument(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Confirmation");
+        alert.setContentText("Are you sure?");
+        alert.showAndWait().ifPresent((btnType)->{
+            if (btnType == ButtonType.OK){
+                locker.removeDocument(document);
+                lockerDataSource.setLockerData(locker);
+                documentTable.getColumns().clear();
+                documentTable.getItems().clear();
+                showTableDocument();
+            }
+        });
     }
 
     @FXML
