@@ -3,26 +3,28 @@
 6110406163
 
 ## วิธีติดตั้งโปรแกรม
-* เปิด Command Prompt แล้วพิมพ์ git clone https://6110406163@bitbucket.org/6110406163/6110406163.git
-* เปิดโปรแกรม IntelliJ IDEA แล้ว import โฟลเดอร์ที่มี src อยู่ข้างใน
+* เปิด Command Prompt และเปลี่ยน directory ไปที่ Folder ที่ต้องการเก็บไฟล์ที่จะ clone
+* พิมพ์ git clone https://6110406163@bitbucket.org/6110406163/6110406163.git แล้ว enter
+* เปิดโปรแกรม IntelliJ IDEA แล้ว import Folder ที่มี src อยู่ข้างใน
 
-## วิธีการติดตั้งและ run ไฟล์ jar
+## วิธีการ run ไฟล์ jar
 * กรณีที่ double click ได้ 
-    - เปิด Folder ที่ clone โปรเจคมา แล้วเข้าไปที่ 6110406163\jar File and pdf จากนั้น double click ที่ jar file ชื่อว่า 6110406163.jar 
+    - เปิด Folder ที่ clone โปรเจคมา แล้วเข้าไปที่ ...\6110406163\jar file and pdf file จากนั้น double click ที่ jar file ที่ชื่อว่า 6110406163.jar 
 * กรณีที่ double click ไม่ได้
-    - เปิด command ขึ้นมาแล้วเปลี่ยน directory ไปที่ Folder ที่มี jar file อยู่ และใช้คำสั่ง java -jar 6110406163.jar
+    - เปิด command ขึ้นมาแล้วเปลี่ยน directory ไปที่ ...\6110406163\jar file and pdf file และใช้คำสั่ง java -jar 6110406163.jar
 
-## การวางโครงสร้าง
+## การวางโครงสร้างไฟล์
 * controllers
-    - ProfileController.java เป็น controller ใช้ควบคุม profile.fxml
-    - WelcomeController.java เป็น controller ใช้ควบคุม welcome.fxml
-    - LoginController.java เป็น controller ใช้ควบคุม login.fxml
-    - AdministratorController.java เป็น controller ใช้ควบคุม administrator.fxml
-    - StaffController.java เป็น controller ใช้ควบคุม staff.fxml
-    - SetRoomInformationController.java เป็น controller ใช้ควบคุม set_room_information.fxml
-    - ReceiveLetterController.java เป็น controller ใช้ควบคุม receive_letter.fxml
-    - ReceiveDocumentController.java เป็น controller ใช้ควบคุม receive_document.fxml
-    - ReceiveParcelController.java เป็น controller ใช้ควบคุม receive_parcel.fxml
+    - ProfileController.java เป็น controller ใช้ควบคุมการทำงานของ profile.fxml
+    - ManualController.java เป็น controller ใช้ควบคุมการทำงานของ manual.fxml
+    - WelcomeController.java เป็น controller ใช้ควบคุมการทำงานของ welcome.fxml
+    - LoginController.java เป็น controller ใช้ควบคุมการทำงานของ login.fxml
+    - AdministratorController.java เป็น controller ใช้ควบคุมการทำงานของ administrator.fxml
+    - StaffController.java เป็น controller ใช้ควบคุมการทำงานของ staff.fxml
+    - SetRoomInformationController.java เป็น controller ใช้ควบคุมการทำงานของ set_room_information.fxml
+    - ReceiveLetterController.java เป็น controller ใช้ควบคุมการทำงานของ receive_letter.fxml
+    - ReceiveDocumentController.java เป็น controller ใช้ควบคุมการทำงานของ receive_document.fxml
+    - ReceiveParcelController.java เป็น controller ใช้ควบคุมการทำงานของ receive_parcel.fxml
 * models
     - Document.java เก็บข้อมูลของเอกสาร
     - GuestInformation.java เก็บข้อมูลของผู้เข้าพัก
@@ -36,23 +38,26 @@
     - Staffs.java เก็บ Object ของเจ้าหน้าที่ส่วนกลางใน ArrayList
 * services
     - GuestDataSource.java เก็บ method ที่ใช้ใน GuestFileDataSource
-    - GuestFileDataSource.java เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของผู้เข้าพัก
+    - GuestFileDataSource.java เป็น class ไว้สำหรับสร้างการอ่านและเขียนไฟล์ของผู้เข้าพัก
+    - LockerDataSource.java เก็บ method ที่ใช้ใน LockerFileDataSource
+    - LockerFileDataSource เป็น class ไว้สำหรับสร้างการอ่านและเขียนไฟล์ของตู้เก็บของ(เก็บจดหมาย/เอกสาร/พัสดุ)
     - RoomDataSource.java เก็บ method ที่ใช้ใน RoomFileDataSource
-    - RoomFileDataSource.java เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของการกำหนดข้อมูลห้อง
+    - RoomFileDataSource.java เป็น class ไว้สำหรับสร้างการอ่านและเขียนไฟล์ของการกำหนดข้อมูลห้อง
     - StaffDataSource.java เก็บ method ที่ใช้ใน StaffFileDataSource
-    - StaffFileDataSource.java เป็น class ไว้สำหรับสร้าง อ่าน เขียน File ของเจ้าหน้าที่ส่วนกลาง
+    - StaffFileDataSource.java เป็น class ไว้สำหรับสร้างการอ่านและเขียนไฟล์ของเจ้าหน้าที่ส่วนกลาง
 * resources
     - โฟลเดอร์ image
         - profile.jpg
     - profile.fxml แสดงหน้าข้อมูลผู้จัดทำ
+    - manual.fxml แสดงหน้าอธิบายการใช้งานโปรแกรม
     - welcome.fxml แสดงหน้าแรกของโปรแกรม
     - login.fxml แสดงหน้ากรอกรหัสผ่านเพื่อเข้าใช้ระบบ
-    - administrator.fxml แสดงหน้าสมัครรหัสผ่านให้กับเจ้าหน้าที่ส่วนกลาง และตารางวันและเวลาที่เจ้าหน้าที่ส่วนกลางเข้าใชัระบบ
-    - staff.fxml แสดงหน้าข้อมูลของผู้เข้าพัก
-    - set_room_information.fxml แสดงหน้ากรอกข้อมูลของห้องพัก
-    - receive_letter.fxml แสดงหน้ากรอกข้อมูลการรับจดหมาย
-    - receive_document.fxml แสดงหน้ากรอกข้อมูลการรับเอกสาร
-    - receive_parcel.fxml แสดงหน้ากรอกข้อมูลการรับพัสดุ
+    - administrator.fxml แสดงหน้าสร้างบัญชีให้กับเจ้าหน้าที่ส่วนกลาง และตารางวันและเวลาที่เจ้าหน้าที่ส่วนกลางเข้าสู่ระบบ
+    - staff.fxml แสดงหน้าข้อมูลของผู้เข้าพัก และเพิ่มผู้เข้าพัก
+    - set_room_information.fxml แสดงหน้ากำหนดข้อมูลของห้องพัก
+    - receive_letter.fxml แสดงหน้ากรอกข้อมูลจดหมายที่เจ้าหน้าที่ส่วนกลางได้รับ และตารางข้อมูลของจดหมาย
+    - receive_document.fxml แสดงหน้ากรอกข้อมูลเอกสารที่เจ้าหน้าที่ส่วนกลางได้รับ และตารางข้อมูลของเอกสาร
+    - receive_parcel.fxml แสดงหน้ากรอกข้อมูลพัสดุที่เจ้าหน้าที่ส่วนกลางได้รับ และตารางข้อมูลของพัสดุ
 
 ## สิ่งที่ทำในแต่ละสัปดาห์
 * สัปดาห์ที่ 1
@@ -98,6 +103,23 @@
     - แสดงตารางการเข้าระบบของเจ้าหน้าที่ส่วนกลางและเรียงวันเวลาที่เจ้าหน้าที่ส่วนกลางเข้าระบบล่าสุดก่อน
     - แสดงตารางข้อมูลผู้เข้าพักและเรียงห้องพักจากน้อยไปมาก
     - เพิ่ม Folder ชื่อ jar File and pdf
-    - ย้าย 6110406163.jar ไปไว้ในใน Folder jar File and pdf
+    - ย้าย 6110406163.jar ไปไว้ใน Folder jar File and pdf
     - เพิ่ม 6110406163.pdf (ยังไม่เสร็จเพราะโปรแกรมยังไม่สมบูรณ์) ใน Folder jar File and pdf
+    - แก้ไขไฟล์ README.md
+* สัปดาห์ที่ 8
+    - clone project เข้าเครื่อง เพราะลงวินโดว์ใหม่
+    - แก้ไข font ของ fxml ทุกหน้า
+    - แก้ไข fxml receive_document, receive_letter, receive_parcel, staff ใน Package resources
+    - แก้ไข class AdministratorController, LoginController, ReceiveDocumentController, ReceiveLetterController, ReceiveParcelController,
+    StaffController, WelcomeController ใน Package controllers
+    - แก้ไข class Document, Guests, Letter, Locker, Parcel ใน Package models
+    - สร้าง interface LockerDataSource ใน Package services
+    - สร้าง class LockerFileDataSource ใน Package services
+    - อ่านเขียนไฟล์ csv ที่เก็บข้อมูลในตู้เก็บของ
+    - แสดงตารางรายการจดหมาย/เอกสาร/พัสดุที่เจ้าหน้าที่ส่วนกลางได้รับและเรียงวันเวลาที่รับล่าสุดก่อน
+    - ลบรายการจดหมาย/เอกสาร/พัสดุที่ผู้เข้าพักมารับแล้วออกจากตาราง
+    - สร้าง class ManualController ใน Package controllers
+    - สร้าง fxml manual ใน Package resources
+    - แก้ไข 6110406163.pdf
+    - install jar file และย้ายไปไว้ใน Folder jar File and pdf
     - แก้ไขไฟล์ README.md
