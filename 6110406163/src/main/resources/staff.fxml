@@ -83,5 +83,10 @@
          </font>
       </Button>
       <ChoiceBox fx:id="roomSetList" layoutX="80.0" layoutY="250.0" prefHeight="31.0" prefWidth="165.0" />
+      <Label fx:id="error" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="350.0" prefHeight="29.0" prefWidth="230.0" text="error" textAlignment="CENTER" textFill="#b51515">
+         <font>
+            <Font name="Cambria" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

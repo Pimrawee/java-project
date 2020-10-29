@@ -123,15 +123,19 @@ public class ReceiveLetterController {
 
     @FXML
     public void handleToAddLetter(ActionEvent event){
-        if (guests.checkGuest(receiverLetter.getText(), (String) roomList.getValue())) {
-            Letter letter = new Letter(receiverLetter.getText(), (String) roomList.getValue(), senderLetter.getText(), sizeLetter.getText());
-            letter.setDateTimeReceive();
-            locker.addLetter(letter);
-            lockerDataSource.setLockerData(locker);
-            error.setText("Successful!");
+        if (receiverLetter.getText().equals("") || roomList.getValue() == null || senderLetter.getText().equals("") || sizeLetter.getText().equals("")){
+            error.setText("Incorrect information");
         }
         else {
-            error.setText("Invalid Information.");
+            if (guests.checkGuest(receiverLetter.getText(), (String) roomList.getValue())) {
+                Letter letter = new Letter(receiverLetter.getText(), (String) roomList.getValue(), senderLetter.getText(), sizeLetter.getText());
+                letter.setDateTimeReceive();
+                locker.addLetter(letter);
+                lockerDataSource.setLockerData(locker);
+                error.setText("Successful!");
+            } else {
+                error.setText("Invalid Information.");
+            }
         }
         error.setOpacity(1);
         receiverLetter.clear();

@@ -28,7 +28,7 @@ public class StaffController {
     private LockerDataSource lockerDataSource;
 
     @FXML
-    Label nameStaff;
+    Label nameStaff, error;
 
     @FXML
     TextField nameGuest;
@@ -81,6 +81,7 @@ public class StaffController {
                 }
             }
         });
+        error.setOpacity(0);
     }
 
     public void showTableGuest(){
@@ -111,23 +112,30 @@ public class StaffController {
 
     @FXML
     public void handleToAddGuest(ActionEvent event){
-        for (RoomInformation r : rooms.toList()){
-            if (r.getRoomCon().equals(roomSetList.getValue())){
-                GuestInformation guestInformation = new GuestInformation(nameGuest.getText(), r.getRoom(), r.getFloor());
-                guestInformation.setRoomGuestCon(r.getRoomCon());
-                guestInformation.setType(r.getType());
-                guests.add(guestInformation);
-                guestDataSource.setGuestsData(guests);
-                r.setNumGuests(r.getNumGuests() + 1);
-                roomDataSource.setRoomsData(rooms);
-            }
+        if (nameGuest.getText().equals("") || roomSetList.getValue() == null){
+            error.setText("Incorrect information");
         }
-        nameGuest.clear();
-        guestTable.getColumns().clear();
-        guestTable.getItems().clear();
-        roomSetList.getItems().clear();
-        setRoomSetList();
-        showTableGuest();
+        else {
+            for (RoomInformation r : rooms.toList()) {
+                if (r.getRoomCon().equals(roomSetList.getValue())) {
+                    GuestInformation guestInformation = new GuestInformation(nameGuest.getText(), r.getRoom(), r.getFloor());
+                    guestInformation.setRoomGuestCon(r.getRoomCon());
+                    guestInformation.setType(r.getType());
+                    guests.add(guestInformation);
+                    guestDataSource.setGuestsData(guests);
+                    r.setNumGuests(r.getNumGuests() + 1);
+                    roomDataSource.setRoomsData(rooms);
+                    error.setText("Successful!");
+                }
+            }
+            error.setOpacity(1);
+            nameGuest.clear();
+            guestTable.getColumns().clear();
+            guestTable.getItems().clear();
+            roomSetList.getItems().clear();
+            setRoomSetList();
+            showTableGuest();
+        }
     }
 
     @FXML

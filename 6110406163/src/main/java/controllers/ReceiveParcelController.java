@@ -127,15 +127,19 @@ public class ReceiveParcelController {
 
     @FXML
     public void handleToAddParcel(ActionEvent event){
-        if (guests.checkGuest(receiverParcel.getText(), (String) roomList.getValue())) {
-            Parcel parcel = new Parcel(receiverParcel.getText(), (String) roomList.getValue(), senderParcel.getText(), sizeParcel.getText(), companyParcel.getText(), trackingNumberParcel.getText());
-            parcel.setDateTimeReceive();
-            locker.addParcel(parcel);
-            lockerDataSource.setLockerData(locker);
-            error.setText("Successful!");
+        if (receiverParcel.getText().equals("") || roomList.getValue() == null || senderParcel.getText().equals("") || sizeParcel.getText().equals("") || companyParcel.getText().equals("") || trackingNumberParcel.getText().equals("")){
+            error.setText("Incorrect information");
         }
         else {
-            error.setText("Invalid Information.");
+            if (guests.checkGuest(receiverParcel.getText(), (String) roomList.getValue())) {
+                Parcel parcel = new Parcel(receiverParcel.getText(), (String) roomList.getValue(), senderParcel.getText(), sizeParcel.getText(), companyParcel.getText(), trackingNumberParcel.getText());
+                parcel.setDateTimeReceive();
+                locker.addParcel(parcel);
+                lockerDataSource.setLockerData(locker);
+                error.setText("Successful!");
+            } else {
+                error.setText("Invalid Information.");
+            }
         }
         error.setOpacity(1);
         receiverParcel.clear();

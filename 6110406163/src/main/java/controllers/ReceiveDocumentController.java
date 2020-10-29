@@ -127,15 +127,19 @@ public class ReceiveDocumentController {
 
     @FXML
     public void handleToAddDocument(ActionEvent event){
-        if (guests.checkGuest(receiverDocument.getText(), (String) roomList.getValue())) {
-            Document document = new Document(receiverDocument.getText(), (String) roomList.getValue(), senderDocument.getText(), sizeDocument.getText(), (String) levelList.getValue());
-            document.setDateTimeReceive();
-            locker.addDocument(document);
-            lockerDataSource.setLockerData(locker);
-            error.setText("Successful!");
+        if (receiverDocument.getText().equals("") || roomList.getValue() == null || senderDocument.getText().equals("") || sizeDocument.getText().equals("") || levelList.getValue() == null){
+            error.setText("Incorrect information");
         }
         else {
-            error.setText("Invalid Information.");
+            if (guests.checkGuest(receiverDocument.getText(), (String) roomList.getValue())) {
+                Document document = new Document(receiverDocument.getText(), (String) roomList.getValue(), senderDocument.getText(), sizeDocument.getText(), (String) levelList.getValue());
+                document.setDateTimeReceive();
+                locker.addDocument(document);
+                lockerDataSource.setLockerData(locker);
+                error.setText("Successful!");
+            } else {
+                error.setText("Invalid Information.");
+            }
         }
         error.setOpacity(1);
         receiverDocument.clear();
@@ -144,7 +148,6 @@ public class ReceiveDocumentController {
         sizeDocument.clear();
         documentTable.getColumns().clear();
         documentTable.getItems().clear();
-
         levelList.setValue(setLevelList);
         setRoomList();
         showTableDocument();

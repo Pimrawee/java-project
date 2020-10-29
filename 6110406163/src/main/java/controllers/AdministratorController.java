@@ -75,30 +75,33 @@ public class AdministratorController {
 
     @FXML
     public void handleToRegisterStaff(ActionEvent event){
-        if (staffs.checkEmpty()) {
-            StaffInformation staffInformation = new StaffInformation(nameStaff.getText(), usernameStaff.getText(), passwordStaff.getText());
-            staffs.addStaff(staffInformation);
-            staffDataSource.setStaffsData(staffs);
-            error.setText("Successful!");
+        if (nameStaff.getText().equals("") || usernameStaff.getText().equals("") || passwordStaff.getText().equals("")){
+            error.setText("Incorrect information");
         }
         else {
-            if (!(staffs.checkStaff(nameStaff.getText()))) {
+            if (staffs.checkEmpty()) {
                 StaffInformation staffInformation = new StaffInformation(nameStaff.getText(), usernameStaff.getText(), passwordStaff.getText());
                 staffs.addStaff(staffInformation);
                 staffDataSource.setStaffsData(staffs);
                 error.setText("Successful!");
+            } else {
+                if (!(staffs.checkStaff(nameStaff.getText()))) {
+                    StaffInformation staffInformation = new StaffInformation(nameStaff.getText(), usernameStaff.getText(), passwordStaff.getText());
+                    staffs.addStaff(staffInformation);
+                    staffDataSource.setStaffsData(staffs);
+                    error.setText("Successful!");
+                } else {
+                    error.setText("Has the name of the central officer.");
+                }
             }
-            else {
-                error.setText("Has the name of the central officer.");
-            }
+            staffsTable.getColumns().clear();
+            staffsTable.getItems().clear();
+            showTableStaff();
+            error.setOpacity(1);
+            nameStaff.clear();
+            usernameStaff.clear();
+            passwordStaff.clear();
         }
-        staffsTable.getColumns().clear();
-        staffsTable.getItems().clear();
-        showTableStaff();
-        error.setOpacity(1);
-        nameStaff.clear();
-        usernameStaff.clear();
-        passwordStaff.clear();
     }
 
     @FXML
