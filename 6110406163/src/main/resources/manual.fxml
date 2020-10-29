@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: ccccff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ManualController">
+   <children>
+      <TabPane fx:id="manual" layoutX="50.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab fx:id="manualAdmin" text="Administrator">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: ded7d9;">
+                     <children>
+                        <Label alignment="TOP_LEFT" layoutX="25.0" layoutY="31.0" prefHeight="400.0" prefWidth="650.0" text="1. การเข้าสู่ระบบ&#10;&#9;1.1 คลิกปุ่ม Administrator จากหน้าแรกของโปรแกรม&#10;&#9;1.2 กรอก username และ password ให้ถูกต้องและคลิกปุ่ม Login&#10;2. การสมัครบัญชีให้เจ้าหน้าที่ส่วนกลาง&#10;&#9;2.1 กรอก name, username และ password ให้ถูกต้อง&#10;&#9;2.2 คลิกปุ่ม Register&#10;3. ตรวจสอบการเข้าสู่ระบบของเจ้าหน้าที่ส่วนกลาง โดยข้อมูลจะแสดงในรูป&#10;แบบของตาราง&#10;4. ออกจากระบบ ให้คลิกปุ่ม Logout ที่อยู่ทางขวาบนของโปรแกรม">
+                           <font>
+                              <Font name="Angsana New" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="manualStaff" text="Staff">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: ded7d9;">
+                     <children>
+                        <Label layoutX="25.0" layoutY="6.0" prefHeight="450.0" prefWidth="650.0" text="1. การเข้าสู่ระบบ&#10;&#9;1.1 คลิกปุ่ม Staff จากหน้าแรกของโปรแกรม&#10;&#9;1.2 กรอก username และ password ให้ถูกต้องและคลิกปุ่ม Login&#10;2. การกำหนดข้อมูลห้องพัก&#10;&#9;2.1 คลิกปุ่ม Set Room Information&#10;&#9;2.2 เลือกข้อมูลที่ต้องการจะกำหนด&#10;&#9;2.3 คลิกปุ่ม Set&#10;3. การเพิ่มผู้เข้าพัก&#10;&#9;3.1 กรอก name และเลือกห้องพักที่ผู้เข้าพักต้องการจะเข้าพัก&#10;&#9;3.2 คลิกปุ่ม Add&#10;4. การตรวจสอบข้อมูลผู้เข้าพัก โดยข้อมูลจะแสดงในรูปแบบของตาราง&#10;5. เมื่อเจ้าหน้าที่ส่วนกลางได้รับจดหมาย/เอกสาร/พัสดุ&#10;&#9;5.1 คลิกที่ปุ่ม Letter, Document หรือ Parcel ตามประเภทของของที่ได้รับ&#10;&#9;5.2 กรอกข้อมูลทางด้านซ้ายให้ครบถ้วนและถูกต้อง&#10;&#9;5.3 คลิกปุ่ม Add&#10;6. เมื่อผู้เข้าพักมารับจดหมาย/เอกสาร/พัสดุที่เจ้าหน้าที่ส่วนกลาง&#10;&#9;6.1 คลิกที่ปุ่ม Letter, Document หรือ Parcel ตามประเภทของของที่มารับ&#10;&#9;6.2 เลือกข้อมูลที่อยู่ในตารางและคลิกที่คอลัมน์นั้น&#10;&#9;6.3 คลิกปุ่ม Remove&#10;7. การย้อนกลับไปหน้าเดิม ทำได้โดยการคลิกปุ่ม Back ทางซ้ายล่าง&#10;8. การออกจากระบบ ให้คลิกปุ่ม Logout ที่อยู่ทางขวาบนของโปรแกรม" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+      <Button layoutX="15.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleToBack" style="-fx-background-color: cc66ff;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Cambria" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -101,6 +101,15 @@ public class WelcomeController {
     }
 
     @FXML
+    public void handleToManual(ActionEvent event) throws IOException {
+        Button b = (Button) event.getSource();
+        Stage stage = (Stage) b.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/manual.fxml"));
+        stage.setScene(new Scene(loader.load(), 800, 600));
+        stage.show();
+    }
+
+    @FXML
     public void handleToProfile(ActionEvent event) throws IOException {
         Button b = (Button) event.getSource();
         Stage stage = (Stage) b.getScene().getWindow();
