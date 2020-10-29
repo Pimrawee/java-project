@@ -16,6 +16,8 @@ import services.LockerDataSource;
 import services.RoomDataSource;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ReceiveParcelController {
     private String nameStaffLogin;
@@ -92,6 +94,13 @@ public class ReceiveParcelController {
     }
 
     public void setRoomList(){
+        Collections.sort(guests.toList(), new Comparator<GuestInformation>() {
+            @Override
+            public int compare(GuestInformation o1, GuestInformation o2) {
+                return o1.getRoomGuestCon().compareTo(o2.getRoomGuestCon());
+            }
+        });
+
         for (GuestInformation g : guests.toList()){
             if (!g.getName().equals("")){
                 roomList.getItems().add(g.getRoomGuestCon());

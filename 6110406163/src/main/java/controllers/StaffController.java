@@ -16,6 +16,8 @@ import services.LockerDataSource;
 import services.RoomDataSource;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class StaffController {
     private Rooms rooms;
@@ -103,6 +105,13 @@ public class StaffController {
     }
 
     public void setRoomSetList(){
+        Collections.sort(rooms.toList(), new Comparator<RoomInformation>() {
+            @Override
+            public int compare(RoomInformation o1, RoomInformation o2) {
+                return o1.getRoomCon().compareTo(o2.getRoomCon());
+            }
+        });
+
         for (RoomInformation r : rooms.toList()){
             if (r.getNumGuests() >= 0 && r.getNumGuests() < r.getMaxGuests()){
                 roomSetList.getItems().add(r.getRoomCon());
