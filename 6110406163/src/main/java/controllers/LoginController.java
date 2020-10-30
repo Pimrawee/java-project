@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,6 +42,9 @@ public class LoginController {
     @FXML
     Label error;
 
+    @FXML
+    Button forgotPassword;
+
     public void setCheck(String check) {
         this.check = check;
     }
@@ -79,6 +83,14 @@ public class LoginController {
 
     @FXML
     public void initialize(){
+        Platform.runLater(() -> {
+            if(check.equals("s")){
+                forgotPassword.setDisable(false);
+            }
+            else {
+                forgotPassword.setText("");
+            }
+        });
         error.setOpacity(0);
     }
 
@@ -136,6 +148,18 @@ public class LoginController {
                 error.setOpacity(1);
             }
         }
+    }
+
+    @FXML
+    public void handleToChangePassword(ActionEvent event) throws IOException{
+        Button b = (Button) event.getSource();
+        Stage stage = (Stage) b.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/change_password.fxml"));
+        stage.setScene(new Scene(loader.load(), 800, 600));
+        ChangePasswordController changePasswordController = loader.getController();
+        changePasswordController.setStaffs(staffs);
+        changePasswordController.setStaffDataSource(staffDataSource);
+        stage.show();
     }
 
     @FXML

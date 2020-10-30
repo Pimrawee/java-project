@@ -55,6 +55,23 @@ public class Staffs{
         }
     }
 
+    public boolean checkUsernameStaff(String username){
+        for (StaffInformation s : staffs){
+            if (s.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setNewPassword(String username, String newPassword){
+        for (StaffInformation s : staffs) {
+            if (s.getUsername().equals(username)) {
+                s.setPassword(newPassword);
+            }
+        }
+    }
+
     public ArrayList<StaffInformation> toList() {
         return staffs;
     }
