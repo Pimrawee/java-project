@@ -71,7 +71,7 @@
       <TextField fx:id="trackingNumberParcel" layoutX="13.0" layoutY="360.0" prefHeight="31.0" prefWidth="247.0" />
       <TextField fx:id="sizeParcel" layoutX="110.0" layoutY="400.0" prefHeight="31.0" prefWidth="150.0" />
       <Line endX="-100.0" endY="466.0" layoutX="367.0" layoutY="125.0" startX="-100.0" />
-      <TableView fx:id="parcelTable" layoutX="270.0" layoutY="130.0" prefHeight="400.0" prefWidth="525.0">
+      <TableView fx:id="parcelTable" layoutX="270.0" layoutY="140.0" prefHeight="400.0" prefWidth="525.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
@@ -82,7 +82,7 @@
             <Font name="Cambria" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="445.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleToRemoveParcel" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #336600;" text="Remove" textFill="WHITE">
+      <Button layoutX="445.0" layoutY="545.0" mnemonicParsing="false" onAction="#handleToRemoveParcel" prefHeight="46.0" prefWidth="167.0" style="-fx-background-color: #336600;" text="Remove" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -95,6 +95,11 @@
       <Label fx:id="error" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="520.0" prefHeight="29.0" prefWidth="230.0" text="error" textAlignment="CENTER" textFill="#b51515">
          <font>
             <Font name="Cambria" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="275.0" layoutY="100.0" text="Parcel in the locker Table">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
          </font>
       </Label>
    </children>
