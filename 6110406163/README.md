@@ -19,6 +19,7 @@
     - ManualController.java เป็น controller ใช้ควบคุมการทำงานของ manual.fxml
     - WelcomeController.java เป็น controller ใช้ควบคุมการทำงานของ welcome.fxml
     - LoginController.java เป็น controller ใช้ควบคุมการทำงานของ login.fxml
+    - ChangePassword.java เป็น controller ใช้ควบคุมการทำงานของ change_password.fxml
     - AdministratorController.java เป็น controller ใช้ควบคุมการทำงานของ administrator.fxml
     - StaffController.java เป็น controller ใช้ควบคุมการทำงานของ staff.fxml
     - SetRoomInformationController.java เป็น controller ใช้ควบคุมการทำงานของ set_room_information.fxml
@@ -52,6 +53,7 @@
     - manual.fxml แสดงหน้าอธิบายการใช้งานโปรแกรม
     - welcome.fxml แสดงหน้าแรกของโปรแกรม
     - login.fxml แสดงหน้ากรอกรหัสผ่านเพื่อเข้าใช้ระบบ
+    - change_password.fxml แสดงหน้าเปลี่ยนรหัสผ่าน
     - administrator.fxml แสดงหน้าสร้างบัญชีให้กับเจ้าหน้าที่ส่วนกลาง และตารางวันและเวลาที่เจ้าหน้าที่ส่วนกลางเข้าสู่ระบบ
     - staff.fxml แสดงหน้าข้อมูลของผู้เข้าพัก และเพิ่มผู้เข้าพัก
     - set_room_information.fxml แสดงหน้ากำหนดข้อมูลของห้องพัก
