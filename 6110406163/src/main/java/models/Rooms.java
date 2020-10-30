@@ -57,6 +57,14 @@ public class Rooms {
         }
     }
 
+    public void removeGuest(GuestInformation guestInformation){
+        for (RoomInformation r : rooms){
+            if (guestInformation.getRoomGuestCon().equals(r.getRoomCon())){
+                r.setNumGuests(r.getNumGuests()-1);
+            }
+        }
+    }
+
     public String roomSet(){
         for (RoomInformation r : rooms) {
             if (r.getNumGuests() >= 0 || r.getNumGuests() < r.getMaxGuests()) {

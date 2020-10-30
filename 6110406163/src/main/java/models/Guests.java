@@ -13,6 +13,10 @@ public class Guests {
         guests.add(guestInformation);
     }
 
+    public void remove(GuestInformation guestInformation){
+        guests.remove(guestInformation);
+    }
+
     public boolean checkGuest(String nameGuest, String room){
         for (GuestInformation g : guests){
             if (g.getName().equals(nameGuest) && g.getRoomGuestCon().equals(room)){

@@ -28,6 +28,7 @@ public class StaffController {
     private ObservableList<GuestInformation> guestObservableList;
     private Locker locker;
     private LockerDataSource lockerDataSource;
+    private GuestInformation guestInformation;
 
     @FXML
     Label nameStaff, error;
@@ -84,6 +85,11 @@ public class StaffController {
             }
         });
         error.setOpacity(0);
+        guestTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null){
+                guestInformation = (GuestInformation) newValue;
+            }
+        });
     }
 
     public void showTableGuest(){
@@ -134,7 +140,7 @@ public class StaffController {
                     guestDataSource.setGuestsData(guests);
                     r.setNumGuests(r.getNumGuests() + 1);
                     roomDataSource.setRoomsData(rooms);
-                    error.setText("Successful!");
+                    error.setText("Add Successful!");
                 }
             }
             error.setOpacity(1);
@@ -145,6 +151,27 @@ public class StaffController {
             setRoomSetList();
             showTableGuest();
         }
+    }
+
+    @FXML
+    public void handleToRemoveGuest(ActionEvent event){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Confirmation");
+        alert.setContentText("Are you sure?");
+        alert.showAndWait().ifPresent((btnType)->{
+            if (btnType == ButtonType.OK){
+                guests.remove(guestInformation);
+                guestDataSource.setGuestsData(guests);
+                rooms.removeGuest(guestInformation);
+                roomDataSource.setRoomsData(rooms);
+                guestTable.getColumns().clear();
+                guestTable.getItems().clear();
+                error.setText("Remove Successful!");
+                error.setOpacity(1);
+                showTableGuest();
+            }
+        });
     }
 
     @FXML

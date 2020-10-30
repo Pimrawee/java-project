@@ -112,7 +112,7 @@
     - แก้ไข fxml receive_document, receive_letter, receive_parcel, staff ใน Package resources
     - แก้ไข class AdministratorController, LoginController, ReceiveDocumentController, ReceiveLetterController, ReceiveParcelController,
     StaffController, WelcomeController ใน Package controllers
-    - แก้ไข class Document, Guests, Letter, Locker, Parcel ใน Package models
+    - แก้ไข class Document, Guests, Letter, Locker, Parcel, Rooms ใน Package models
     - สร้าง interface LockerDataSource ใน Package services
     - สร้าง class LockerFileDataSource ใน Package services
     - อ่านเขียนไฟล์ csv ที่เก็บข้อมูลในตู้เก็บของ
@@ -120,6 +120,7 @@
     - ลบรายการจดหมาย/เอกสาร/พัสดุที่ผู้เข้าพักมารับแล้วออกจากตาราง
     - สร้าง class ManualController ใน Package controllers
     - สร้าง fxml manual ใน Package resources
+    - ทำ 13.5 (extra 2 คะแนน) มีส่วนสําหรับการนําข้อมูลผู้เข้าพักออกจากห้องพัก โดยต้องมีการยืนยันก่อนที่จะนําออกจริง
     - แก้ไข 6110406163.pdf
     - install jar file และย้ายไปไว้ใน Folder jar File and pdf
     - แก้ไขไฟล์ README.md
