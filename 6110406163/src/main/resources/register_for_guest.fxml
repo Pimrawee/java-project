@@ -38,6 +38,7 @@
       <TextField fx:id="nameGuest" layoutX="350.0" layoutY="220.0" />
       <ChoiceBox fx:id="roomChoiceBox" layoutX="350.0" layoutY="270.0" prefHeight="31.0" prefWidth="187.0" />
       <TextField fx:id="usernameGuest" layoutX="350.0" layoutY="330.0" />
+      <PasswordField fx:id="passwordGuest" layoutX="350.0" layoutY="390.0" />
       <Button fx:id="back" layoutX="10.0" layoutY="555.0" mnemonicParsing="false" onAction="#handleToBack" style="-fx-background-color: e76f51;" text="Back" textFill="WHITE">
          <font>
             <Font name="Cambria" size="18.0" />
@@ -53,6 +54,5 @@
             <Font name="Cambria" size="24.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passwordGuest" layoutX="350.0" layoutY="390.0" />
    </children>
 </AnchorPane>
