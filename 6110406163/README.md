@@ -19,9 +19,10 @@
     - ManualController.java เป็น controller ใช้ควบคุมการทำงานของ manual.fxml
     - WelcomeController.java เป็น controller ใช้ควบคุมการทำงานของ welcome.fxml
     - LoginController.java เป็น controller ใช้ควบคุมการทำงานของ login.fxml
-    - ChangePassword.java เป็น controller ใช้ควบคุมการทำงานของ change_password.fxml
+    - ChangePasswordController.java เป็น controller ใช้ควบคุมการทำงานของ change_password.fxml
     - AdministratorController.java เป็น controller ใช้ควบคุมการทำงานของ administrator.fxml
     - StaffController.java เป็น controller ใช้ควบคุมการทำงานของ staff.fxml
+    - RegisterForGuestController.java เป็น controller ใช้ควบคุมการทำงานของ register_for_guest.fxml
     - SetRoomInformationController.java เป็น controller ใช้ควบคุมการทำงานของ set_room_information.fxml
     - ReceiveLetterController.java เป็น controller ใช้ควบคุมการทำงานของ receive_letter.fxml
     - ReceiveDocumentController.java เป็น controller ใช้ควบคุมการทำงานของ receive_document.fxml
@@ -56,6 +57,7 @@
     - change_password.fxml แสดงหน้าเปลี่ยนรหัสผ่าน
     - administrator.fxml แสดงหน้าสร้างบัญชีให้กับเจ้าหน้าที่ส่วนกลาง และตารางวันและเวลาที่เจ้าหน้าที่ส่วนกลางเข้าสู่ระบบ
     - staff.fxml แสดงหน้าข้อมูลของผู้เข้าพัก และเพิ่มผู้เข้าพัก
+    - register_for_guest.fxml แสดงหน้าสร้างบัญชีให้กับผู้เข้าพัก
     - set_room_information.fxml แสดงหน้ากำหนดข้อมูลของห้องพัก
     - receive_letter.fxml แสดงหน้ากรอกข้อมูลจดหมายที่เจ้าหน้าที่ส่วนกลางได้รับ และตารางข้อมูลของจดหมาย
     - receive_document.fxml แสดงหน้ากรอกข้อมูลเอกสารที่เจ้าหน้าที่ส่วนกลางได้รับ และตารางข้อมูลของเอกสาร
@@ -113,8 +115,8 @@
     - แก้ไข font ของ fxml ทุกหน้า
     - แก้ไข fxml receive_document, receive_letter, receive_parcel, staff, login ใน Package resources
     - แก้ไข class AdministratorController, LoginController, ReceiveDocumentController, ReceiveLetterController, ReceiveParcelController,
-    StaffController, WelcomeController ใน Package controllers
-    - แก้ไข class Document, Guests, Letter, Locker, Parcel, Rooms, Staffs ใน Package models
+    StaffController, WelcomeController, ChangePassword ใน Package controllers
+    - แก้ไข class Document, Guests, Letter, Locker, Parcel, Rooms, Staffs, GuestInformation ใน Package models
     - สร้าง interface LockerDataSource ใน Package services
     - สร้าง class LockerFileDataSource ใน Package services
     - อ่านเขียนไฟล์ csv ที่เก็บข้อมูลในตู้เก็บของ
@@ -122,8 +124,11 @@
     - ลบรายการจดหมาย/เอกสาร/พัสดุที่ผู้เข้าพักมารับแล้วออกจากตาราง
     - สร้าง class ManualController, ChangePasswordController ใน Package controllers
     - สร้าง fxml manual, change_password ใน Package resources
+    - แก้ไข class GuestFileDataSource ใน Package services
     - ทำ 13.5 (extra 2 คะแนน) มีส่วนสําหรับการนําข้อมูลผู้เข้าพักออกจากห้องพัก โดยต้องมีการยืนยันก่อนที่จะนําออกจริง
     - ทำ 13.6 (5 คะแนน) เจ้าหน้าที่ส่วนกลางสามารถเปลี่ยนรหัสผ่านของตนเองได้ และรหัสผ่านใหม่ต้องใช้ได้
+    - ทำ 16.1 (extra 4 คะแนน) มีระบบ register สําหรับผู้เข้าพักในคอนโด โดยผู้เข้าพักจะต้องกรอกข้อมูลที่ตรงกับข้อมูลในระบบเท่านั้นจึงจะสร้างเป็นบัญชีผู้ใช้ได้ และมีการแจ้งข้อความที่เป็นประโยชน์ต่อผู้ใช้หากข้อมูลที่กรอกนั้นไม่ถูกต้อง
+    - ทำ 16.2 (extra 2 คะแนน) ผู้เข้าพักอาศัยสามารถเปลี่ยนรหัสผ่านของตนเองได้ และรหัสผ่านใหม่ต้องใช้ได้
     - แก้ไข 6110406163.pdf
     - install jar file และย้ายไปไว้ใน Folder jar File and pdf
     - แก้ไขไฟล์ README.md

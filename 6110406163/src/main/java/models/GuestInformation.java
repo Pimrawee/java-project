@@ -7,12 +7,16 @@ public class GuestInformation {
     private String room;
     private String type;
     private String roomGuestCon;
+    private String username;
+    private String password;
 
     public GuestInformation(String name, String room, String floor) {
         this.name = name;
         this.room = room;
         this.floor = floor;
         this.building = "1";
+        this.username = "-";
+        this.password = "-";
     }
 
     public String getName() {
@@ -39,6 +43,14 @@ public class GuestInformation {
         return roomGuestCon = building + floor + room;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -63,8 +75,16 @@ public class GuestInformation {
         this.roomGuestCon = roomGuestCon;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString(){
-        return getName() + " " + getRoom() + " " + getFloor() + " " + getBuilding() + " " + getType();
+        return getName() + " " + getUsername()+ " " + getPassword() + " " + getRoom() + " " + getFloor() + " " + getBuilding() + " " + getType();
     }
 }

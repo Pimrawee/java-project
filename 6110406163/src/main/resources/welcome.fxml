@@ -31,5 +31,10 @@
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Button>
+      <Button fx:id="guest" layoutX="309.0" layoutY="445.0" mnemonicParsing="false" onAction="#handleToGuestLogin" prefHeight="46.0" prefWidth="182.0" style="-fx-background-color: e76f51;" text="Guest" textFill="WHITE">
+         <font>
+            <Font name="Cambria" size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

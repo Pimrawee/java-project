@@ -44,6 +44,8 @@ public class GuestFileDataSource implements GuestDataSource{
             guestInformation.setBuilding(data[1].trim());
             guestInformation.setType(data[4].trim());
             guestInformation.setRoomGuestCon(data[5].trim());
+            guestInformation.setUsername(data[6].trim());
+            guestInformation.setPassword(data[7].trim());
             guests.add(guestInformation);
         }
         reader.close();
@@ -70,13 +72,15 @@ public class GuestFileDataSource implements GuestDataSource{
         try {
             fileWriter = new FileWriter(file);
             BufferedWriter writer = new BufferedWriter(fileWriter);
-            for (GuestInformation r : guests.toList()) {
-                String line = r.getName() + ","
-                        + r.getBuilding() + ","
-                        + r.getFloor() + ","
-                        + r.getRoom() + ","
-                        + r.getType() + ","
-                        + r.getRoomGuestCon();
+            for (GuestInformation g : guests.toList()) {
+                String line = g.getName() + ","
+                        + g.getBuilding() + ","
+                        + g.getFloor() + ","
+                        + g.getRoom() + ","
+                        + g.getType() + ","
+                        + g.getRoomGuestCon() + ","
+                        + g.getUsername() + ","
+                        + g.getPassword();
                 writer.append(line);
                 writer.newLine();
             }

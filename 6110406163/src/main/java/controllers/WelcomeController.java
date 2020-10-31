@@ -101,6 +101,19 @@ public class WelcomeController {
     }
 
     @FXML
+    public void handleToGuestLogin(ActionEvent event) throws IOException{
+        Button b = (Button) event.getSource();
+        Stage stage = (Stage) b.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+        stage.setScene(new Scene(loader.load(), 800, 600));
+        LoginController loginController = loader.getController();
+        loginController.setGuests(guests);
+        loginController.setGuestDataSource(guestDataSource);
+        loginController.setCheck("g");
+        stage.show();
+    }
+
+    @FXML
     public void handleToManual(ActionEvent event) throws IOException {
         Button b = (Button) event.getSource();
         Stage stage = (Stage) b.getScene().getWindow();

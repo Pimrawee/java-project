@@ -43,7 +43,7 @@ public class LoginController {
     Label error;
 
     @FXML
-    Button forgotPassword;
+    Button forgotPassword, register;
 
     public void setCheck(String check) {
         this.check = check;
@@ -84,11 +84,18 @@ public class LoginController {
     @FXML
     public void initialize(){
         Platform.runLater(() -> {
-            if(check.equals("s")){
+            if(check.equals("s") || check.equals("g")){
                 forgotPassword.setDisable(false);
+                if (check.equals("g")){
+                    register.setDisable(false);
+                }
+                else {
+                    register.setText("");
+                }
             }
             else {
                 forgotPassword.setText("");
+                register.setText("");
             }
         });
         error.setOpacity(0);
@@ -157,8 +164,23 @@ public class LoginController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/change_password.fxml"));
         stage.setScene(new Scene(loader.load(), 800, 600));
         ChangePasswordController changePasswordController = loader.getController();
+        changePasswordController.setCheck(check);
         changePasswordController.setStaffs(staffs);
         changePasswordController.setStaffDataSource(staffDataSource);
+        changePasswordController.setGuests(guests);
+        changePasswordController.setGuestDataSource(guestDataSource);
+        stage.show();
+    }
+
+    @FXML
+    public void handleToRegisterGuest(ActionEvent event) throws IOException{
+        Button b = (Button) event.getSource();
+        Stage stage = (Stage) b.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/register_for_guest.fxml"));
+        stage.setScene(new Scene(loader.load(), 800, 600));
+        RegisterForGuestController registerForGuestController = loader.getController();
+        registerForGuestController.setGuests(guests);
+        registerForGuestController.setGuestDataSource(guestDataSource);
         stage.show();
     }
 

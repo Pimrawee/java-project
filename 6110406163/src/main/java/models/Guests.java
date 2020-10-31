@@ -26,6 +26,32 @@ public class Guests {
         return false;
     }
 
+    public void setUsernameAndPassword(String name, String username, String password){
+        for (GuestInformation g : guests){
+            if (g.getName().equals(name)){
+                g.setUsername(username);
+                g.setPassword(password);
+            }
+        }
+    }
+
+    public boolean checkUsernameGuest(String username){
+        for (GuestInformation g : guests){
+            if (g.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void setNewPassword(String username, String newPassword){
+        for (GuestInformation g : guests) {
+            if (g.getUsername().equals(username)) {
+                g.setPassword(newPassword);
+            }
+        }
+    }
+
     public ArrayList<GuestInformation> toList() {
         return guests;
     }
