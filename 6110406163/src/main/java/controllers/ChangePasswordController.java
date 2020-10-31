@@ -77,16 +77,21 @@ public class ChangePasswordController {
             if (username.getText().equals("") || newPassword.getText().equals("") || confirmNewPassword.getText().equals("")) {
                 error.setText("Incorrect information.");
             } else {
-                if (newPassword.getText().equals(confirmNewPassword.getText())) {
-                    if (guests.checkUsernameGuest(username.getText())) {
-                        guests.setNewPassword(username.getText(), newPassword.getText());
-                        guestDataSource.setGuestsData(guests);
-                        error.setText("Password changed successfully.");
+                if (guests.checkUsernameAndPassword(username.getText())) {
+                    if (newPassword.getText().equals(confirmNewPassword.getText())) {
+                        if (guests.checkUsernameGuest(username.getText())) {
+                            guests.setNewPassword(username.getText(), newPassword.getText());
+                            guestDataSource.setGuestsData(guests);
+                            error.setText("Password changed successfully.");
+                        } else {
+                            error.setText("Incorrect information.");
+                        }
                     } else {
                         error.setText("Incorrect information.");
                     }
-                } else {
-                    error.setText("Incorrect information.");
+                }
+                else {
+                    error.setText("You hasn't created an account.");
                 }
             }
         }

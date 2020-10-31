@@ -52,6 +52,15 @@ public class Guests {
         }
     }
 
+    public boolean checkUsernameAndPassword(String username){
+        for (GuestInformation g : guests){
+            if (g.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<GuestInformation> toList() {
         return guests;
     }
