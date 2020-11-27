@@ -26,6 +26,7 @@ public class StaffController {
     private GuestDataSource guestDataSource;
     private String nameStaffLogin;
     private ObservableList<GuestInformation> guestObservableList;
+    private ObservableList<RoomInformation> roomObservableList;
     private Locker locker;
     private LockerDataSource lockerDataSource;
     private GuestInformation guestInformation;
@@ -38,6 +39,9 @@ public class StaffController {
 
     @FXML
     TableView<GuestInformation> guestTable;
+
+    @FXML
+    TableView<RoomInformation> roomTable;
 
     @FXML
     ChoiceBox roomSetList;
@@ -82,6 +86,10 @@ public class StaffController {
                 if(!guests.toList().isEmpty()) {
                     showTableGuest();
                 }
+
+                if(!rooms.toList().isEmpty()) {
+                    showTableRoom();
+                }
             }
         });
         error.setOpacity(0);
@@ -108,6 +116,31 @@ public class StaffController {
 
         roomCol.setSortType(TableColumn.SortType.ASCENDING);
         guestTable.getSortOrder().add(roomCol);
+    }
+
+    public void showTableRoom(){
+        roomObservableList = FXCollections.observableArrayList(rooms.toList());
+        roomTable.setItems(roomObservableList);
+
+        TableColumn buildingCol = new TableColumn("Building");
+        TableColumn floorCol = new TableColumn("Floor");
+        TableColumn roomCol = new TableColumn("Room");
+        TableColumn typeCol = new TableColumn("Type");
+        TableColumn maxCol = new TableColumn("Max");
+        TableColumn numCol = new TableColumn("Remaining");
+
+        buildingCol.setCellValueFactory(new PropertyValueFactory<Rooms, String>("building"));
+        floorCol.setCellValueFactory(new PropertyValueFactory<Rooms, String>("floor"));
+        roomCol.setCellValueFactory(new PropertyValueFactory<Rooms, String>("roomCon"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<Rooms, String>("type"));
+        maxCol.setCellValueFactory(new PropertyValueFactory<Rooms, String>("maxGuests"));
+        numCol.setCellValueFactory(new PropertyValueFactory<Rooms, String>("numGuests"));
+
+
+        roomTable.getColumns().addAll(buildingCol, floorCol, roomCol, typeCol, maxCol, numCol);
+
+        roomCol.setSortType(TableColumn.SortType.ASCENDING);
+        roomTable.getSortOrder().add(roomCol);
     }
 
     public void setRoomSetList(){

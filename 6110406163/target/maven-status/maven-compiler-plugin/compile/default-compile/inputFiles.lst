@@ -1,5 +1,6 @@
 D:\javaProject\6110406163\6110406163\src\main\java\controllers\SetRoomInformationController.java
 D:\javaProject\6110406163\6110406163\src\main\java\models\GuestInformation.java
+D:\javaProject\6110406163\6110406163\src\main\java\controllers\RegisterForGuestController.java
 D:\javaProject\6110406163\6110406163\src\main\java\services\StaffDataSource.java
 D:\javaProject\6110406163\6110406163\src\main\java\controllers\WelcomeController.java
 D:\javaProject\6110406163\6110406163\src\main\java\services\RoomDataSource.java
@@ -22,6 +23,7 @@ D:\javaProject\6110406163\6110406163\src\main\java\services\LockerFileDataSource
 D:\javaProject\6110406163\6110406163\src\main\java\controllers\ReceiveDocumentController.java
 D:\javaProject\6110406163\6110406163\src\main\java\controllers\ReceiveParcelController.java
 D:\javaProject\6110406163\6110406163\src\main\java\services\GuestFileDataSource.java
+D:\javaProject\6110406163\6110406163\src\main\java\controllers\ChangePasswordController.java
 D:\javaProject\6110406163\6110406163\src\main\java\models\StaffInformation.java
 D:\javaProject\6110406163\6110406163\src\main\java\models\Parcel.java
 D:\javaProject\6110406163\6110406163\src\main\java\Main.java
