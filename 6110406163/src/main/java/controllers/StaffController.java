@@ -126,8 +126,8 @@ public class StaffController {
         TableColumn floorCol = new TableColumn("Floor");
         TableColumn roomCol = new TableColumn("Room");
         TableColumn typeCol = new TableColumn("Type");
-        TableColumn maxCol = new TableColumn("Max");
-        TableColumn numCol = new TableColumn("Remaining");
+        TableColumn maxCol = new TableColumn("Capacity");
+        TableColumn numCol = new TableColumn("Quantity");
 
         buildingCol.setCellValueFactory(new PropertyValueFactory<Rooms, String>("building"));
         floorCol.setCellValueFactory(new PropertyValueFactory<Rooms, String>("floor"));
@@ -181,8 +181,11 @@ public class StaffController {
             guestTable.getColumns().clear();
             guestTable.getItems().clear();
             roomSetList.getItems().clear();
+            roomTable.getColumns().clear();
+            roomTable.getItems().clear();
             setRoomSetList();
             showTableGuest();
+            showTableRoom();
         }
     }
 
@@ -198,11 +201,15 @@ public class StaffController {
                 guestDataSource.setGuestsData(guests);
                 rooms.removeGuest(guestInformation);
                 roomDataSource.setRoomsData(rooms);
+                nameGuest.clear();
                 guestTable.getColumns().clear();
                 guestTable.getItems().clear();
+                roomTable.getColumns().clear();
+                roomTable.getItems().clear();
                 error.setText("Remove Successful!");
                 error.setOpacity(1);
                 showTableGuest();
+                showTableRoom();
             }
         });
     }
