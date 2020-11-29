@@ -28,6 +28,11 @@ public class Parcel extends Letter {
     }
 
     @Override
+    public String getClassName() {
+        return "Parcel";
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " " + getCompany() + " " + getTrackingNumber();
     }

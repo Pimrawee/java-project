@@ -143,7 +143,7 @@ public class ReceiveDocumentController {
             if (guests.checkGuest(receiverDocument.getText(), (String) roomList.getValue())) {
                 Document document = new Document(receiverDocument.getText(), (String) roomList.getValue(), senderDocument.getText(), sizeDocument.getText(), (String) levelList.getValue());
                 document.setDateTimeReceive();
-                locker.addDocument(document);
+                locker.addItem(document);
                 lockerDataSource.setLockerData(locker);
                 error.setText("Successful!");
             } else {
@@ -170,7 +170,7 @@ public class ReceiveDocumentController {
         alert.setContentText("Are you sure?");
         alert.showAndWait().ifPresent((btnType)->{
             if (btnType == ButtonType.OK){
-                locker.removeDocument(document);
+                locker.removeItem(document);
                 lockerDataSource.setLockerData(locker);
                 documentTable.getColumns().clear();
                 documentTable.getItems().clear();

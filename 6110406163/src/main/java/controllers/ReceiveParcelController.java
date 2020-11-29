@@ -143,7 +143,7 @@ public class ReceiveParcelController {
             if (guests.checkGuest(receiverParcel.getText(), (String) roomList.getValue())) {
                 Parcel parcel = new Parcel(receiverParcel.getText(), (String) roomList.getValue(), senderParcel.getText(), sizeParcel.getText(), companyParcel.getText(), trackingNumberParcel.getText());
                 parcel.setDateTimeReceive();
-                locker.addParcel(parcel);
+                locker.addItem(parcel);
                 lockerDataSource.setLockerData(locker);
                 error.setText("Successful!");
             } else {
@@ -171,7 +171,7 @@ public class ReceiveParcelController {
         alert.setContentText("Are you sure?");
         alert.showAndWait().ifPresent((btnType)->{
             if (btnType == ButtonType.OK){
-                locker.removeParcel(parcel);
+                locker.removeItem(parcel);
                 lockerDataSource.setLockerData(locker);
                 parcelTable.getColumns().clear();
                 parcelTable.getItems().clear();

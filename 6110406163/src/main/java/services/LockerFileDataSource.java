@@ -42,17 +42,17 @@ public class LockerFileDataSource implements LockerDataSource{
             if (data[0].equals("Letter")){
                 Letter letter = new Letter(data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim());
                 letter.setTime(data[1].trim());
-                locker.addLetter(letter);
+                locker.addItem(letter);
             }
             else if (data[0].trim().equals("Document")){
                 Document document = new Document(data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(), data[6].trim());
                 document.setTime(data[1].trim());
-                locker.addDocument(document);
+                locker.addItem(document);
             }
             else if (data[0].trim().equals("Parcel")){
                 Parcel parcel = new Parcel(data[2].trim(), data[3].trim(), data[4].trim(), data[5].trim(), data[6].trim(), data[7].trim());
                 parcel.setTime(data[1].trim());
-                locker.addParcel(parcel);
+                locker.addItem(parcel);
             }
         }
         reader.close();

@@ -72,6 +72,10 @@ public class Letter {
         this.size = size;
     }
 
+    public String getClassName(){
+        return "Letter";
+    }
+
     @Override
     public String toString() {
         return getReceiver() + " " + getSender() + " " + getSize();

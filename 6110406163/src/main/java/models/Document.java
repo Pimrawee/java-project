@@ -19,6 +19,11 @@ public class Document extends Letter {
     }
 
     @Override
+    public String getClassName() {
+        return "Document";
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " " + getLevelImportant();
     }

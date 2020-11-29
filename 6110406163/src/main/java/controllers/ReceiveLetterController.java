@@ -139,7 +139,7 @@ public class ReceiveLetterController {
             if (guests.checkGuest(receiverLetter.getText(), (String) roomList.getValue())) {
                 Letter letter = new Letter(receiverLetter.getText(), (String) roomList.getValue(), senderLetter.getText(), sizeLetter.getText());
                 letter.setDateTimeReceive();
-                locker.addLetter(letter);
+                locker.addItem(letter);
                 lockerDataSource.setLockerData(locker);
                 error.setText("Successful!");
             } else {
@@ -165,7 +165,7 @@ public class ReceiveLetterController {
         alert.setContentText("Are you sure?");
         alert.showAndWait().ifPresent((btnType)->{
             if (btnType == ButtonType.OK){
-                locker.removeLetter(letter);
+                locker.removeItem(letter);
                 lockerDataSource.setLockerData(locker);
                 letterTable.getColumns().clear();
                 letterTable.getItems().clear();
