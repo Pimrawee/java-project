@@ -1,0 +1,11 @@
+Letter,29/11/20 00:07:50,guest,1810,sender1,9x12
+Letter,29/11/20 00:08:38,guest,1810,sender2,10x13
+Letter,29/11/20 00:09:23,guest2,1109,sender1,15x18
+Letter,29/11/20 00:09:43,guest2,1109,sender2,9x12
+Document,29/11/20 00:10:09,guest,1810,sender1,9.5x12.5,Regular
+Document,29/11/20 00:10:29,guest,1810,sender2,10.9x14.5,Secret
+Document,29/11/20 00:10:50,guest,1810,sender3,9x12.5,Top Secret
+Document,29/11/20 00:11:13,guest2,1109,sender1,15x20,Regular
+Parcel,29/11/20 00:13:35,guest,1810,sender1,20x30x10,thailand post,EF582621151TH
+Parcel,29/11/20 00:14:25,guest2,1109,sender2,15x25x10,kerry,TMDM000386214
+Parcel,29/11/20 11:59:05,guest,1810,sender2,20x30x15,flash express,TH02056RA154
