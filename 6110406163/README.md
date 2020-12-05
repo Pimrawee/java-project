@@ -133,7 +133,7 @@
     - install jar file และย้ายไปไว้ใน Folder jar File and pdf
     - แก้ไขไฟล์ README.md
     
-## สิ่งที่แก้ไข
+## สิ่งที่แก้ไขในการส่งงานแก้ไขโปรเจครอบที่ 2
 * แก้ไข 6110406163.pdf ใน Folder jar File and pdf
 * install jar file และย้ายไปไว้ใน Folder jar File and pdf
 * แก้ไขไฟล์ README.md
@@ -157,3 +157,13 @@
     - ควรมีไฟล์ data เริ่มต้นไว้ให้ด้วย จะได้ตรวจได้ค่ะ
         - เพิ่มข้อมูลเริ่มต้นทุกส่วนจำนวนหนึ่ง
         - push Folder data ที่เก็บไฟล์ csv
+
+## สิ่งที่แก้ไขในการส่งงานแก้ไขโปรเจครอบที่ 3
+* ยังไม่เป็น polymorphism ค่ะ ให้ยุบเมทอด toListLetter(), toListDocument(), toListParcel() ให้เหลือเมทอดเดียวค่ะ จะเห็นว่าสามเมทอดนี้โค้ดแทบจะเหมือนกันเลย และเราไม่ต้อง cast type หรือเช็ค type ก่อน add เข้า ArrayList ค่ะ add เข้าไปเฉย ๆ ได้เลย
+    - แก้ไข class Document, Letter, Locker, Parcel ใน Package models
+    - สร้าง interface Format ใน Package services
+    - สร้าง class LetterFormat, DocumentFormat, ParcelFormat ใน Package services
+    - แก้ไข class LockerFileDataSource ใน Package services
+    - แก้ไข class ReceiveDocumentController, ReceiveLetterController, ReceiveParcelController ใน Package controllers
+* install jar file และย้ายไปไว้ใน Folder jar File and pdf
+* แก้ไขไฟล์ README.md

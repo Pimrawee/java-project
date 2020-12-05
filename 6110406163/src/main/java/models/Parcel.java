@@ -33,6 +33,14 @@ public class Parcel extends Letter {
     }
 
     @Override
+    public String getFormat(){
+        String line = super.getFormat() + ","
+                + getCompany() + ","
+                + getTrackingNumber();
+        return line;
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " " + getCompany() + " " + getTrackingNumber();
     }

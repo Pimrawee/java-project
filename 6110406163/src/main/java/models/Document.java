@@ -24,6 +24,13 @@ public class Document extends Letter {
     }
 
     @Override
+    public String getFormat(){
+        String line = super.getFormat() + ","
+                + getLevelImportant();
+        return line;
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " " + getLevelImportant();
     }

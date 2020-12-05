@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.*;
+import services.DocumentFormat;
 import services.GuestDataSource;
 import services.LockerDataSource;
 import services.RoomDataSource;
@@ -27,7 +28,7 @@ public class ReceiveDocumentController {
     private GuestDataSource guestDataSource;
     private Locker locker;
     private LockerDataSource lockerDataSource;
-    private ObservableList<Document> documentObservableList;
+    private ObservableList<Letter> documentObservableList;
     private Document document;
     ObservableList<String> setLevelList = FXCollections.observableArrayList("Regular", "Secret", "Top Secret");
 
@@ -82,7 +83,7 @@ public class ReceiveDocumentController {
 
                 setRoomList();
 
-                if(!locker.toListDocument().isEmpty()) {
+                if(!locker.toLists(new DocumentFormat()).isEmpty()) {
                     showTableDocument();
                 }
             }
@@ -111,7 +112,7 @@ public class ReceiveDocumentController {
     }
 
     public void showTableDocument(){
-        documentObservableList = FXCollections.observableArrayList(locker.toListDocument());
+        documentObservableList = FXCollections.observableArrayList(locker.toLists(new DocumentFormat()));
         documentTable.setItems(documentObservableList);
 
         TableColumn timeCol = new TableColumn("Date & Time");

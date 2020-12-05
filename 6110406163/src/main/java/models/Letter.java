@@ -76,6 +76,16 @@ public class Letter {
         return "Letter";
     }
 
+    public String getFormat(){
+        String line = getType() + ","
+                + getTime() + ","
+                + getReceiver() + ","
+                + getRoomReceiver() + ","
+                + getSender() + ","
+                + getSize();
+        return line;
+    }
+
     @Override
     public String toString() {
         return getReceiver() + " " + getSender() + " " + getSize();

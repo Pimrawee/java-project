@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.*;
 import services.GuestDataSource;
+import services.LetterFormat;
 import services.LockerDataSource;
 import services.RoomDataSource;
 
@@ -80,7 +81,7 @@ public class ReceiveLetterController {
 
                 setRoomList();
 
-                if(!locker.toListLetter().isEmpty()) {
+                if(!locker.toLists(new LetterFormat()).isEmpty()) {
                     showTableLetter();
                 }
             }
@@ -109,7 +110,7 @@ public class ReceiveLetterController {
     }
 
     public void showTableLetter(){
-        letterObservableList = FXCollections.observableArrayList(locker.toListLetter());
+        letterObservableList = FXCollections.observableArrayList(locker.toLists(new LetterFormat()));
         letterTable.setItems(letterObservableList);
 
         TableColumn timeCol = new TableColumn("Date & Time");

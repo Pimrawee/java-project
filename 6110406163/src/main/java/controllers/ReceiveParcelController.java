@@ -11,9 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.*;
-import services.GuestDataSource;
-import services.LockerDataSource;
-import services.RoomDataSource;
+import services.*;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -26,7 +24,7 @@ public class ReceiveParcelController {
     private Guests guests;
     private GuestDataSource guestDataSource;
     private Locker locker;
-    private ObservableList<Parcel> parcelObservableList;
+    private ObservableList<Letter> parcelObservableList;
     private LockerDataSource lockerDataSource;
     private Parcel parcel;
 
@@ -80,7 +78,7 @@ public class ReceiveParcelController {
 
                 setRoomList();
 
-                if(!locker.toListParcel().isEmpty()) {
+                if(!locker.toLists(new ParcelFormat()).isEmpty()) {
                     showTableParcel();
                 }
             }
@@ -109,7 +107,7 @@ public class ReceiveParcelController {
     }
 
     public void showTableParcel(){
-        parcelObservableList = FXCollections.observableArrayList(locker.toListParcel());
+        parcelObservableList = FXCollections.observableArrayList(locker.toLists(new ParcelFormat()));
         parcelTable.setItems(parcelObservableList);
 
         TableColumn timeCol = new TableColumn("Date & Time");

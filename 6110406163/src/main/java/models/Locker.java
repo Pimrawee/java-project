@@ -1,5 +1,7 @@
 package models;
 
+import services.Format;
+
 import java.util.ArrayList;
 
 public class Locker {
@@ -17,33 +19,11 @@ public class Locker {
         lockers.remove(letter);
     }
 
-    public ArrayList<Letter> toListLetter() {
-        ArrayList<Letter> letters = new ArrayList<>();
-        for (Letter e : lockers) {
-            if(e.getClassName().equals("Letter")){
-                letters.add(e);
-            }
-        }
-        return letters;
+    public ArrayList<Letter> getLockers() {
+        return lockers;
     }
 
-    public ArrayList<Document> toListDocument() {
-        ArrayList<Document> letters = new ArrayList<>();
-        for (Letter e : lockers) {
-            if(e.getClassName().equals("Document")){
-                letters.add((Document) e);
-            }
-        }
-        return letters;
-    }
-
-    public ArrayList<Parcel> toListParcel() {
-        ArrayList<Parcel> letters = new ArrayList<>();
-        for (Letter e : lockers) {
-            if(e.getClassName().equals("Parcel")){
-                letters.add((Parcel) e);
-            }
-        }
-        return letters;
+    public ArrayList<Letter> toLists(Format format) {
+        return format.getList(lockers);
     }
 }

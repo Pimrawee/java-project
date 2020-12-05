@@ -79,37 +79,8 @@ public class LockerFileDataSource implements LockerDataSource{
         try {
             fileWriter = new FileWriter(file);
             BufferedWriter writer = new BufferedWriter(fileWriter);
-            for (Letter l : locker.toListLetter()) {
-                String line = l.getType() + ","
-                        + l.getTime() + ","
-                        + l.getReceiver() + ","
-                        + l.getRoomReceiver() + ","
-                        + l.getSender() + ","
-                        + l.getSize();
-                writer.append(line);
-                writer.newLine();
-            }
-            for (Document d : locker.toListDocument()){
-                String line = d.getType() + ","
-                        + d.getTime() + ","
-                        + d.getReceiver() + ","
-                        + d.getRoomReceiver() + ","
-                        + d.getSender() + ","
-                        + d.getSize() + ","
-                        + d.getLevelImportant();
-                writer.append(line);
-                writer.newLine();
-            }
-            for (Parcel p : locker.toListParcel()){
-                String line = p.getType() + ","
-                        + p.getTime() + ","
-                        + p.getReceiver() + ","
-                        + p.getRoomReceiver() + ","
-                        + p.getSender() + ","
-                        + p.getSize() + ","
-                        + p.getCompany() + ","
-                        + p.getTrackingNumber();
-                writer.append(line);
+            for (Letter l : locker.getLockers()) {
+                writer.append(l.getFormat());
                 writer.newLine();
             }
             writer.close();
